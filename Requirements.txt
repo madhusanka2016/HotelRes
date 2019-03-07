@@ -1,0 +1,7 @@
+
+Profit Report- Need a seacrh bar to search in daily/monthly/early
+employee salary handling 
+booking summary report
+customer details- Need to update-delete
+create all the reservations(room/banquet/pool/cafetaria)
+user registration

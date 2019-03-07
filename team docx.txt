@@ -1,0 +1,71 @@
+<div class="team" id="team">
+	<div class="container">
+			<h3 class="title-w3-agileits title-black-wthree">Meet Our Team</h3>
+			<div id="horizontalTab">
+					<ul class="resp-tabs-list">
+					<li>
+						<img src="images/t1.jpg" alt=" " class="img-responsive" />
+					</li>
+					<li>
+						<img src="images/t2.jpg" alt=" " class="img-responsive" />
+					</li>
+					<li>
+						<img src="images/t3.jpg" alt=" " class="img-responsive" />
+					</li>
+					
+					</ul>
+					<div class="resp-tabs-container">
+					
+						<div class="col-md-6 team-Info-agileits">
+							<h4>Pradeep Dayananda</h4>
+							<span>Managing Director/Owner</span>
+							<p>A specialist in the hospitality industry with experience of over 10 years. Currently, an proudly owner of the Hortain Rise Group the largest conglomerate in Sri Lanka and Sector Head, Hortain Rise Hotels & Resorts 
+                                                            .</p>
+						<div class="social-bnr-agileits footer-icons-agileinfo">
+							<ul class="social-icons3">
+								<li><a href="#" class="fa fa-facebook icon-border facebook"> </a></li>
+								<li><a href="#" class="fa fa-twitter icon-border twitter"> </a></li>
+								<li><a href="#" class="fa fa-google-plus icon-border googleplus"> </a></li> 
+								<li><a href="#" class="fa fa-rss icon-border rss"> </a></li>
+							</ul>
+						</div>							
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					
+						<div class="col-md-6 team-Info-agileits">
+							<h4>Nalaka Amarasinghe</h4>
+							<span>Manager</span>
+							<p>Expert in Management with 10 years of experience in People Management, Strategic Planning and Implementation, Turning Around Businesses, Global Marketing, Hotel Management, Destination Management, Hospitality Consulting, Leadership Development, Sustainability and Change Management..</p>	
+						<div class="social-bnr-agileits footer-icons-agileinfo">
+							<ul class="social-icons3">
+								<li><a href="#" class="fa fa-facebook icon-border facebook"> </a></li>
+								<li><a href="#" class="fa fa-twitter icon-border twitter"> </a></li>
+								<li><a href="#" class="fa fa-google-plus icon-border googleplus"> </a></li> 
+								<li><a href="#" class="fa fa-rss icon-border rss"> </a></li>
+							</ul>
+						</div>							
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					
+						<div class="col-md-6 team-Info-agileits">
+							<h4>Chadeepa Silva</h4>
+							<span>Recepsionist</span>
+							<p>Specialized in Business Communication in with 5 years working experience.</p>
+						<div class="social-bnr-agileits footer-icons-agileinfo">
+							<ul class="social-icons3">
+								<li><a href="#" class="fa fa-facebook icon-border facebook"> </a></li>
+								<li><a href="#" class="fa fa-twitter icon-border twitter"> </a></li>
+								<li><a href="#" class="fa fa-google-plus icon-border googleplus"> </a></li> 
+								<li><a href="#" class="fa fa-rss icon-border rss"> </a></li>
+							</ul>
+						</div>							
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+					
+					</div>
+			</div>
+	</div>
+</div>
