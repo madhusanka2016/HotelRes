@@ -8,6 +8,7 @@ $sql2 = "SELECT * FROM login WHERE id = '$user_id'";
 $result2 = mysqli_query($con, $sql2);
 $userRow = mysqli_fetch_array($result2, MYSQLI_ASSOC);
 
+$Page_title = 'RESERVATION HORTAINRISE HOTEL';
 
 }
 ?>
@@ -16,7 +17,7 @@ $userRow = mysqli_fetch_array($result2, MYSQLI_ASSOC);
 <head>
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RESERVATION HORTAINRISE HOTEL</title>
+    <title><?php echo $Page_title ?> </title>
 	<!-- Bootstrap Styles-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FontAwesome Styles-->

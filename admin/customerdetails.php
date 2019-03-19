@@ -16,6 +16,8 @@ if ($userRow['role'] == "reception") {
     header("location:home.php");
 }
 
+$Page_title = 'HORTAINRISE HOTEL';
+
 ob_start();
 ?> 
 <!DOCTYPE html>
@@ -23,7 +25,7 @@ ob_start();
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>HORTAINRISE HOTEL</title>
+        <title><?php echo $Page_title ?> </title>
         <!-- Bootstrap Styles-->
         <link href="assets/css/bootstrap.css" rel="stylesheet" />
         <!-- FontAwesome Styles-->

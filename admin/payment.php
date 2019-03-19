@@ -15,6 +15,8 @@ $userRow = mysqli_fetch_array($result2, MYSQLI_ASSOC);
 if ($userRow['role'] == "admin") {
     header("location:home.php");
 }
+$Page_title = 'Administrator';
+
 
 ?> 
 <!DOCTYPE html>
@@ -22,7 +24,7 @@ if ($userRow['role'] == "admin") {
 <head>
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HORTAINRISE HOTEL</title>
+    <title><?php echo $Page_title ?> HORTAINRISE HOTEL</title>
 	<!-- Bootstrap Styles-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FontAwesome Styles-->

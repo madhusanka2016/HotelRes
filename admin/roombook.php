@@ -18,6 +18,7 @@ if ($userRow['role'] == "admin") {
     header("location:home.php");
 }
 }
+$Page_title = 'Administrator';
 
 
 ?> 
@@ -74,7 +75,7 @@ if ($userRow['role'] == "admin") {
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Administrator	</title>
+    <title><?php echo $Page_title ?> Administrator	</title>
     <!-- Bootstrap Styles-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FontAwesome Styles-->

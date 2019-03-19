@@ -6,6 +6,7 @@ $getid = "SELECT max(id) as id FROM payment";
 $result2 = mysqli_query($con, $getid);
 $row = mysqli_fetch_array($result2, MYSQLI_ASSOC);
 
+$Page_title = 'Payment gateway';
 
 
 $sid = $row['id'];
@@ -16,7 +17,7 @@ $sid = $row['id'];
 <head>
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Payment gateway</title>
+    <title><?php echo $Page_title ?> </title>
 	<!-- Bootstrap Styles-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FontAwesome Styles-->
