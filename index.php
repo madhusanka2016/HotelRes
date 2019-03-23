@@ -30,6 +30,37 @@ while ($row = $result->fetch_assoc()) {
 }
  
 }
+
+
+
+if(isset($_POST['signup']))
+{
+	
+
+      $username= $_POST['uname'];
+			$password = $_POST['psw'];
+			$cpassword = $_POST['cpsw'];
+			if($password==$cpassword)
+			{
+
+				$sql ="INSERT INTO `user`(`username`, `password`) VALUES ('$username','$password')" ;
+				if(mysqli_query($conn,$sql))
+					{
+			 			echo '<script>alert("User Registerd Successfully") </script>' ;
+					}else {
+						echo '<script>alert("Sorry ! Check The System") </script>' ;
+					}
+
+			}else {
+				echo '<script>alert("Password Mismatch") </script>' ;
+			}
+      
+      
+			
+                          
+
+ 
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -84,7 +115,11 @@ while ($row = $result->fetch_assoc()) {
                                     }
                                     else
                                     {
-                                        ?>  <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button> <?php
+                                        ?>  <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
+																				<button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">SignUp</button>
+																				
+																				
+																				 <?php
                                     }
                                     
                                     ?>
@@ -120,9 +155,42 @@ while ($row = $result->fetch_assoc()) {
     </div>
   </form>
 </div>
+
+<div id="id02" class="modal">
+    
+    
+    
+  
+    <form class="modal-content animate" action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <img src="images/user2.png" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="container">
+      <label for="uname"><b>Username</b></label>
+      <input type="text" placeholder="Enter Username" name="uname" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+			<label for="psw"><b>Confirm Password</b></label>
+      <input type="password" placeholder="Comfirm Password" name="cpsw" required>
+        
+      <button type="submit" name="signup">Signup</button>
+      
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+  </form>
+</div>
 <script>
 // Get the modal
 var modal = document.getElementById('id01');
+var modal = document.getElementById('id02');
+
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
@@ -1127,6 +1195,55 @@ fit: true
 	</div>
 <!-- //smooth scrolling -->
 <script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
+
+<div class="modal fade" id="Addmodel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                <h4 class="modal-title" id="myModalLabel">Register User</h4>
+                                            </div>
+                                            <form method="post">
+                                                <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <label>Add new employee no</label>
+                                                        <input name="newno"  class="form-control" placeholder="Enter Employee No">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label>Add new employee name</label>
+                                                        <input name="newname"  class="form-control" placeholder="Enter Employee Name">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label>Add contact no</label>
+                                                        <input name="newcon" type="tel" class="form-control" placeholder="Enter Employee Contact">
+                                                    </div>
+
+
+
+                                                    <div class="form-group">
+                                                        <label>Designation</label>
+                                                        <input name="newdes"  class="form-control" placeholder="Enter Employee Designation">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label>Date Joined</label>
+                                                        <input name="newdate" type="date" value="<?php echo date("Y-m-d"); ?>" class="form-control" placeholder="Enter date joined">
+                                                    </div>
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                                                    <input type="submit" name="in" value="Add" class="btn btn-primary">
+                                                        </form>
+
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+																</div>
 </body>
 </html>
 
