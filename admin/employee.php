@@ -225,8 +225,11 @@ ob_start();
 
                                                     <div class="form-group">
                                                         <label>Designation</label>
-                                                        <input name="newdes"  class="form-control" placeholder="Enter Employee Designation">
-                                                    </div>
+                                                        <select name="newdes" class="form-control" required>
+                                                                <option value="admin">ADMINISTRATOR</option>
+                                                                <option value="manager">MANAGER</option>
+                                                                <option value="reception">RECEPTION</option>                           
+                                                        </select>                                                    </div>
 
                                                     <div class="form-group">
                                                         <label>Date Joined</label>
@@ -290,7 +293,7 @@ ob_start();
                                                     </div>
 
                                                     <div class="form-group">
-                                                        <label>Add contact no</label>
+                                                        <label>Add contact sssno</label>
                                                         <input name="newcon" type="tel" class="form-control" placeholder="Enter Employee Contact">
                                                     </div>
 
@@ -298,7 +301,11 @@ ob_start();
 
                                                     <div class="form-group">
                                                         <label>Designation</label>
-                                                        <input name="newdes"  class="form-control" placeholder="Enter Employee Designation">
+                                                        <select name="newdes" class="form-control" required>
+                                                                <option value="admin">ADMINISTRATOR</option>
+                                                                <option value="manager">MANAGER</option>
+                                                                <option value="reception">RECEPTION</option>                           
+                                                        </select>
                                                     </div>
 
                                                     <div class="form-group">
