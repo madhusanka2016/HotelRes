@@ -11,7 +11,7 @@ $sql2 = "SELECT * FROM login WHERE id = '$user_id'";
 $result2 = mysqli_query($con, $sql2);
 $userRow = mysqli_fetch_array($result2, MYSQLI_ASSOC);
 
-if ($userRow['role'] == "admin"||$userRow['role'] == "reception") {
+if ($userRow['role'] != "manager") {
     header("location:home.php");
 }
 $Page_title = 'HORTAINRISE HOTEL';
@@ -71,47 +71,8 @@ $Page_title = 'HORTAINRISE HOTEL';
             </ul>
         </nav>
         <!--/. NAV TOP  -->
-        <nav class="navbar-default navbar-side" role="navigation">
-            <div class="sidebar-collapse">
-                <ul class="nav" id="main-menu">
+        <?php include('includes/sidebar.php'); ?>
 
-                    
-                    <li>
-                        <a  href="home.php"><i class="fa fa-dashboard"></i> Status</a>
-                    </li>
-                    <li>
-                        <a href="messages.php"><i class="fa fa-desktop"></i> News Letters</a>
-                    </li>
-					<li>
-                        <a href="roombook.php"><i class="fa fa-bar-chart-o"></i> Room Booking</a>
-                    </li>
-                    <li>
-                        <a href="payment.php"><i class="fa fa-qrcode"></i> Payment</a>
-                    </li>
-                    <li>
-                        <a  href="profit.php"><i class="fa fa-qrcode"></i> Profit</a>
-                    </li>
-                    <li>
-                        <a href="profit_rep.php"><i class="fa fa-sign-out fa-fw"></i> Profit Report</a>
-                    </li>
-                    <li>
-                        <a href="employee.php"><i class="fa fa-sign-out fa-fw"></i> Employee</a>
-                    </li>
-                    <li>
-                        <a class="active-menu" href="attendance.php"><i class="fa fa-sign-out fa-fw"></i> Employee Attendance</a>
-                    </li>
-                    <li>
-                                <a  href="customerdetails.php"><i class="fa fa-sign-out fa-fw"></i> Customer Details</a>
-                    </li>
-                    <li>
-                        <a href="logout.php"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                    </li>
-					
-
-                    
-            </div>
-
-        </nav>
         <!-- /. NAV SIDE  -->
        
         
