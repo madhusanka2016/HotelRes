@@ -1,16 +1,25 @@
 <?php
 include('db.php');
 
-$email2 = $_REQUEST['sid'];
+//$email2 = $_REQUEST['sid'];
+$getid = "SELECT max(id) as id FROM roombook";
 
-$getid = "SELECT id FROM roombook  where stat = 'Not Conform' and email = '$email2'";
+//$getid = "SELECT * FROM roombook  where stat = 'Not Conform' and email = '$email2'";
 $result2 = mysqli_query($con, $getid);
 $row = mysqli_fetch_array($result2, MYSQLI_ASSOC);
 
 $sid = $row['id'];
+// $room = $row['TRoom'];
+// $Bed =  $row['Bed'];
+ $ava = "SELECT place FROM room  ";
+$result3 = mysqli_query($con, $ava);
+$row1 = mysqli_fetch_array($result3, MYSQLI_ASSOC);
+$state = $row1['place'];
+
+
 
 ?>
-<html>
+<html id="body">
     <head>
         <meta charset="utf-8">
         <title>Details of Book key</title>
@@ -166,7 +175,7 @@ $sid = $row['id'];
         </style>
 
     </head>
-    <body>
+    <body  >
 
 
 
@@ -211,7 +220,10 @@ $sid = $row['id'];
 
         <form method="post" action="pay.php">
             <input hidden="" value="<?php echo $sid; ?>" name="pid"/>
-            <input type="submit" style="background: #0078A5; color: #fff; padding: 5px" onclick="location.href = ''" name="pay" value="Pay Online" class="btn btn-primary"> 
+
+            <a href="../"><input type="button" style="background: #0078A5; color: #fff; padding: 5px"   name="add" value="Back To Home" class="btn btn-primary"> </a>
+
+            <input type="button" style="background: #0078A5; color: #fff; padding: 5px" onclick="printel()" name="add" value="Print Invoice" class="btn btn-primary"> 
         </form>
 
         <article>
@@ -220,11 +232,12 @@ $sid = $row['id'];
 
                 <p><br></p>
                 <p>Coustomer Name  : -  <?php echo $title . $Fname . " " . $lname; ?><br></p>
+                <!-- <p>Availability : -  <?php echo $state; ?><br></p> -->
             </address>
             <table class="meta">
                 <tr>
                     <th><span >Customer ID</span></th>
-                    <td><span ><?php echo $id; ?></span></td>
+                    <td><span ><?php echo $id; ?> </span></td>
                 </tr>
                 <tr>
                     <th><span >Check in Date</span></th>
@@ -378,3 +391,16 @@ $sid = $row['id'];
 <?php
 ob_end_flush();
 ?>
+<script>
+
+function printel(){
+    var w = window.open('', 'PRINT', 'height=3508, width = 2480');
+    w.document.write(document.getElementById("body").innerHTML);
+    w.document.close();
+    w.focus();
+    w.print();
+    w.close();
+    return true;
+}
+
+</script>

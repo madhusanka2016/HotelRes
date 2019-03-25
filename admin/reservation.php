@@ -227,10 +227,7 @@ $Page_title = 'RESERVATION HORTAINRISE HOTEL';
 									$check="SELECT * FROM roombook WHERE email = '$_POST[email]'";
 									$rs = mysqli_query($con,$check);
 									$data = mysqli_fetch_array($rs, MYSQLI_NUM);
-									if($data[0] > 1) {
-										echo "<script type='text/javascript'> alert('User Already in Exists')</script>";										
-									}
-									else {								
+																	
 										$new ="Not Conform";
 										$newUser="INSERT INTO `roombook`(`Title`, `FName`, `LName`, `Email`, `National`, `Country`, `Phone`, `TRoom`, `Bed`,"
                                                                                         . " `NRoom`, `Meal`, `cin`, `cout`,`stat`,`nodays`) VALUES "
@@ -242,13 +239,18 @@ $Page_title = 'RESERVATION HORTAINRISE HOTEL';
 										}
 										else{echo "<script type='text/javascript'> alert('Error adding user in database')</script>";											
 										}
-									}
+									
                                                                         $msg="Your code is correct";                                                       
-									$getid="SELECT id FROM roombook  where stat = 'Not Conform' and email = '$_POST[email]'";
-									$rs1 = mysqli_query($con,$getid);
-									$data1 = mysqli_fetch_array($rs1, MYSQLI_NUM);
+$row = mysqli_fetch_array($result2, MYSQLI_ASSOC);
+									//$getid="SELECT  id FROM roombook  where stat = 'Not Conform' and email = '$_POST[email]'";
+									$getid="SELECT  max(id) as id FROM roombook ";
+                                    
+                                    $rs1 = mysqli_query($con,$getid);
+                                    
+                                    
+                                    $data1 = mysqli_fetch_array($rs1, MYSQLI_NUM);
                                                                         $sid = $data1['id'];
-											echo "<script type='text/javascript'> window.location.href = 'showpay.php?sid=$_POST[email]' </script>";                                                                                                               
+											echo "<script type='text/javascript'> window.location.href = 'pay.php?sid=$_POST[email]' </script>";                                                                                                               
                                                                         }             
                                                                         } ?>
 						</form>

@@ -192,7 +192,7 @@ $Page_title = 'RESERVATION HORTAINRISE HOTEL';
                                </div>
 							   <div class="form-group">
                                             <label>Check-In-Time</label>
-                                            <input name="cintime" type ="datetime-local" class="form-control">
+                                            <input name="cintime" type ="time-local" class="form-control">
                                             
                                </div>
                        </div>
@@ -224,10 +224,7 @@ $Page_title = 'RESERVATION HORTAINRISE HOTEL';
 									$check="SELECT * FROM banquetbook WHERE email = '$_POST[email]'";
 									$rs = mysqli_query($con,$check);
 									$data = mysqli_fetch_array($rs, MYSQLI_NUM);
-									if($data[0] > 1) {
-										echo "<script type='text/javascript'> alert('User Already in Exists')</script>";										
-									}
-									else {								
+																	
 										$new ="Not Conform";
 										$newUser="INSERT INTO `banquetbook`(`Title`, `FName`, `LName`, `Email`, `National`, `Country`, `Phone`, `THall`, `Farrange`,"
                                                                                         . " `NRoom`, `Light`, `cinDate`, `cinTime`,`stat`) VALUES "
@@ -241,13 +238,13 @@ $Page_title = 'RESERVATION HORTAINRISE HOTEL';
                                                                                     die(mysqli_error($con));
                                                                                     //echo "<script type='text/javascript'> alert('Error adding user in database')</script>";											
 										}
-									}
+									
                                                                         $msg="Your code is correct";                                                       
 									$getid="SELECT id FROM banquetbook  where stat = 'Not Conform' and email = '$_POST[email]'";
 									$rs1 = mysqli_query($con,$getid);
 									$data1 = mysqli_fetch_array($rs1, MYSQLI_NUM);
                                                                         $sid = $data1['id'];
-											echo "<script type='text/javascript'> window.location.href = 'showpayBanquet.php?sid=$_POST[email]' </script>";                                                                                                               
+											echo "<script type='text/javascript'> window.location.href = 'banquetpay.php?sid=$_POST[email]' </script>";                                                                                                               
                                                                         }             
                                                                         } ?>
 						</form>

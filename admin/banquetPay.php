@@ -82,7 +82,7 @@ $sid = $row['id'];
                     <ul class="nav nav-pills nav-stacked">
                         <li class="active">
                             <form method="POST" id="checkout">
-                                <button class="btn btn-info form-control" type="button" onclick="location.href='banquetPrint.php?pid=<?php echo $sid; ?>'"><span class="badge"><span class="glyphicon glyphicon-usd"></span> Make Payment</button>
+                                <button class="btn btn-info form-control" type="button" onclick="location.href='showpaybanquet.php?pid=<?php echo $sid; ?>'"><span class="badge"><span class="glyphicon glyphicon-usd"></span> Make Payment</button>
                             </form>
                             </li>
                         

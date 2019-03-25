@@ -1,16 +1,30 @@
 <?php
 include('db.php');
+$getid = "SELECT max(id) as id FROM banquetbook";
 
-$email2 = $_REQUEST['sid'];
-
-$getid = "SELECT id FROM banquetbook  where stat = 'Not Conform' and Email = '$email2'";
+//$getid = "SELECT * FROM roombook  where stat = 'Not Conform' and email = '$email2'";
 $result2 = mysqli_query($con, $getid);
 $row = mysqli_fetch_array($result2, MYSQLI_ASSOC);
 
 $sid = $row['id'];
+// $room = $row['TRoom'];
+// $Bed =  $row['Bed'];
+ $ava = "SELECT place FROM room  ";
+$result3 = mysqli_query($con, $ava);
+$row1 = mysqli_fetch_array($result3, MYSQLI_ASSOC);
+$state = $row1['place'];
+
+
+// $email2 = $_REQUEST['sid'];
+
+// $getid = "SELECT id FROM banquetbook  where stat = 'Not Conform' and Email = '$email2'";
+// $result2 = mysqli_query($con, $getid);
+// $row = mysqli_fetch_array($result2, MYSQLI_ASSOC);
+
+// $sid = $row['id'];
 
 ?>
-<html>
+<html id="body">
     <head>
         <meta charset="utf-8">
         <title>Details of Book key</title>
@@ -211,7 +225,9 @@ $sid = $row['id'];
 
         <form method="post" action="banquetPay.php">
             <input hidden="" value="<?php echo $sid; ?>" name="pid"/>
-            <input type="submit" style="background: #0078A5; color: #fff; padding: 5px" onclick="location.href = ''" name="pay" value="Pay Online" class="btn btn-primary"> 
+            <a href="../"><input type="button" style="background: #0078A5; color: #fff; padding: 5px"   name="add" value="Back To Home" class="btn btn-primary"> </a>
+
+            <input type="button" style="background: #0078A5; color: #fff; padding: 5px" onclick="printel()" name="add" value="Print Invoice" class="btn btn-primary"> 
         </form>
 
         <article>
@@ -373,7 +389,19 @@ $sid = $row['id'];
             </div>
         </aside>
     </body>
-</html>
+</html><script>
+
+function printel(){
+    var w = window.open('', 'PRINT', 'height=3508, width = 2480');
+    w.document.write(document.getElementById("body").innerHTML);
+    w.document.close();
+    w.focus();
+    w.print();
+    w.close();
+    return true;
+}
+
+</script>
 
 <?php
 ob_end_flush();

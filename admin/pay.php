@@ -2,7 +2,7 @@
 include('db.php');
 
 
-$getid = "SELECT max(id) as id FROM payment";
+$getid = "SELECT max(id) as id FROM roombook";
 $result2 = mysqli_query($con, $getid);
 $row = mysqli_fetch_array($result2, MYSQLI_ASSOC);
 
@@ -81,7 +81,7 @@ $sid = $row['id'];
                     <ul class="nav nav-pills nav-stacked">
                         <li class="active">
                             <form method="POST" id="checkout">
-                                <button class="btn btn-info form-control" type="button" onclick="location.href='print.php?pid=<?php echo $sid; ?>'"><span class="badge"><span class="glyphicon glyphicon-usd"></span> Make Payment</button>
+                                <button class="btn btn-info form-control" type="button" onclick="location.href='showpay.php?pid=<?php echo $sid; ?>'"><span class="badge"><span class="glyphicon glyphicon-usd"></span> Make Payment</button>
                             </form>
                             </li>
                         
