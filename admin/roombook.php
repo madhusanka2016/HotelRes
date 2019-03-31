@@ -14,7 +14,7 @@ $sql2 = "SELECT * FROM login WHERE id = '$user_id'";
 $result2 = mysqli_query($con, $sql2);
 $userRow = mysqli_fetch_array($result2, MYSQLI_ASSOC);
 
-if ($userRow['role'] == "admin") {
+if ($userRow['role'] == "user") {
     header("location:home.php");
 }
 }
@@ -258,7 +258,7 @@ $Page_title = 'Administrator';
 						$dr = 0;
 						while($rrow=mysqli_fetch_array($rre))
 						{
-							$r = $r + 1;
+							
 							$s = $rrow['type'];
 							$p = $rrow['place'];
 							if($s=="Superior Room" )
@@ -329,7 +329,7 @@ $Page_title = 'Administrator';
 							<tr>
 								<td><b>Superior Room	 </b></td>
 								<td><button type="button" class="btn btn-primary btn-circle"><?php  
-									$f1 =$sc - $csc;
+									$f1 =$sc ;
 									if($f1 <=0 )
 									{	$f1 = "NO";
 										echo $f1;
@@ -373,7 +373,7 @@ $Page_title = 'Administrator';
 								<td><b>Deluxe Room</b>	 </td>
 								<td><button type="button" class="btn btn-primary btn-circle"><?php 
 								
-								$f4 =$dr - $cdr; 
+								$f4 =$dr;
 								if($f4 <=0 )
 									{	$f4 = "NO";
 										echo $f4;
@@ -387,7 +387,7 @@ $Page_title = 'Administrator';
 								<td><b>Total Rooms	</b> </td>
 								<td> <button type="button" class="btn btn-danger btn-circle"><?php 
 								
-								$f5 =$r-$cr; 
+								$f5 =$r; 
 								if($f5 <=0 )
 									{	$f5 = "NO";
 										echo $f5;

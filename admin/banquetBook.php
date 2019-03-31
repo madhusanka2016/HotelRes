@@ -48,22 +48,15 @@ $Page_title = 'Administrator';
             $phone = $row['Phone'];
             $thall = $row['THall'];
             $farrange = $row['Farrange'];
-            $nhall = $row['Nroom'];
+            $nhall = $row['NRoom'];
             $light = $row['Light'];
             $cindate = $row['cinDate'];
             $cintime = $row['cinTime'];
             $nodays = $row['nodays'];
-            $sta = $row ['status'];
-				
-				}
-					
-					
-				
-		
+            $sta = $row ['stat'];		
+				}		
 	}
-		
-		
-		
+
 			?> 
 
 <!DOCTYPE html>
@@ -441,8 +434,91 @@ $Page_title = 'Administrator';
 							if($st=="Conform")
 							{
 									$urb = "UPDATE `banquetbook` SET `stat`='$st' WHERE id = '$id'";
-									
-								if($f1=="NO" )
+									if( mysqli_query($con,$urb))
+									{	
+										//echo "<script type='text/javascript'> alert('Guest Room booking is conform')</script>";
+										//echo "<script type='text/javascript'> window.location='home.php'</script>";
+										 $type_of_hall = 0;       
+												if($thall=="Magenta")
+												{
+													$type_of_hall = 320;
+												
+												}
+												else if($thall=="Merigold")
+												{
+													$type_of_hall = 220;
+												}
+												else if($thall=="Citadel")
+												{
+													$type_of_hall = 180;
+												}
+												else if($thall=="Victorian Lobby")
+												{
+													$type_of_hall = 150;
+												}
+												
+												
+												
+												
+												if($farrange=="Artificial")
+												{
+													$type_of_bed = $type_of_hall * 1/100;
+												}
+												else if($farrange=="Fresh")
+												{
+													$type_of_bed = $type_of_hall * 2/100;
+												}														
+												else if($farrange=="None")
+												{
+													$type_of_bed = $type_of_hall * 0/100;
+												}
+												
+												
+												if($light=="Stage Only")
+												{
+													$type_of_meal=$type_of_bed * 0;
+												}
+												else if($light=="Color Changing")
+												{
+													$type_of_meal=$type_of_bed * 2;
+																												
+												}else if($light=="Half Board")
+												{
+													$type_of_meal=$type_of_bed * 3;
+												
+												}else if($light=="Full Board")
+												{
+													$type_of_meal=$type_of_bed * 4;
+												}
+												
+												
+												$ttot = $type_of_hall* $days * $nhall;
+												$mepr = $type_of_meal * $days;
+												$btot = $type_of_bed *$days;
+												
+												$fintot = $ttot + $mepr + $btot ;
+													
+													//echo "<script type='text/javascript'> alert('$count_date')</script>";
+												$psql = "INSERT INTO `payment`(`id`, `title`, `fname`, `lname`, `troom`, `tbed`, `nroom`, `cin`, `cout`, `ttot`,`meal`, `mepr`, `btot`,`fintot`,`noofdays`) VALUES ('$id','$title','$fname','$lname','$troom','$bed','$nroom','$cin','$cout','$ttot','$meal','$mepr','$btot','$fintot','$days')";
+												
+												if(mysqli_query($con,$psql))
+												{	$notfree="NotFree";
+													$rpsql = "UPDATE `banquet` SET `place`='$notfree',`cusid`='$id' where seats ='$bed' and type='$thall' ";
+													if(mysqli_query($con,$rpsql))
+													{
+													echo "<script type='text/javascript'> alert('Booking Conform')</script>";
+													echo "<script type='text/javascript'> window.location='banquetbook.php'</script>";
+													}
+													
+													
+												}
+										
+									}
+							
+								
+					}		
+								
+									if($f1=="NO" )
 								{
 									echo "<script type='text/javascript'> alert('Sorry! Not Available Magenta Hall ')</script>";
 								}
@@ -460,89 +536,7 @@ $Page_title = 'Administrator';
 										echo "<script type='text/javascript'> alert('Sorry! Not Available Victorian Lobby')</script>";
 										}
 										
-										else if( mysqli_query($con,$urb))
-											{	
-												//echo "<script type='text/javascript'> alert('Guest Room booking is conform')</script>";
-												//echo "<script type='text/javascript'> window.location='home.php'</script>";
-												 $type_of_hall = 0;       
-														if($thall=="Magenta")
-														{
-															$type_of_hall = 320;
-														
-														}
-														else if($thall=="Merigold")
-														{
-															$type_of_hall = 220;
-														}
-														else if($thall=="Citadel")
-														{
-															$type_of_hall = 180;
-														}
-														else if($thall=="Victorian Lobby")
-														{
-															$type_of_hall = 150;
-														}
-														
-														
-														
-														
-														if($farrange=="Artificial")
-														{
-															$type_of_bed = $type_of_hall * 1/100;
-														}
-														else if($farrange=="Fresh")
-														{
-															$type_of_bed = $type_of_hall * 2/100;
-														}														
-														else if($farrange=="None")
-														{
-															$type_of_bed = $type_of_hall * 0/100;
-														}
-														
-														
-														if($light=="Stage Only")
-														{
-															$type_of_meal=$type_of_bed * 0;
-														}
-														else if($light=="Color Changing")
-														{
-															$type_of_meal=$type_of_bed * 2;
-                                                                                                                        
-														}else if($light=="Half Board")
-														{
-															$type_of_meal=$type_of_bed * 3;
-														
-														}else if($light=="Full Board")
-														{
-															$type_of_meal=$type_of_bed * 4;
-														}
-														
-														
-														$ttot = $type_of_hall* $days * $nhall;
-														$mepr = $type_of_meal * $days;
-														$btot = $type_of_bed *$days;
-														
-														$fintot = $ttot + $mepr + $btot ;
-															
-															//echo "<script type='text/javascript'> alert('$count_date')</script>";
-														$psql = "INSERT INTO `payment`(`id`, `title`, `fname`, `lname`, `troom`, `tbed`, `nroom`, `cin`, `cout`, `ttot`,`meal`, `mepr`, `btot`,`fintot`,`noofdays`) VALUES ('$id','$title','$fname','$lname','$troom','$bed','$nroom','$cin','$cout','$ttot','$meal','$mepr','$btot','$fintot','$days')";
-														
-														if(mysqli_query($con,$psql))
-														{	$notfree="NotFree";
-															$rpsql = "UPDATE `banquet` SET `place`='$notfree',`cusid`='$id' where seats ='$bed' and type='$thall' ";
-															if(mysqli_query($con,$rpsql))
-															{
-															echo "<script type='text/javascript'> alert('Booking Conform')</script>";
-															echo "<script type='text/javascript'> window.location='banquetbook.php'</script>";
-															}
-															
-															
-														}
-												
-											}
-									
-                                        
-							}	
+							
 					
 						}
 					
