@@ -840,7 +840,7 @@ function showSlides() {
 								<h3><span>$</span>320</h3>                                                                                                                
                                                                 <?php     
                                                                 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){?>
-								<a href="admin/reservation.php" >Book Now</a><?php
+								<a href="admin/poolReservation.php" >Book Now</a><?php
                                                                 }
                                                                 else {
                                                                 ?>  <button onclick="document.getElementById('id01').style.display='block'" style="font-size: 0.9em; color: #000000;padding: 0.5em 2em;background: #ffce14;text-decoration: none;border: 2px solid #ecbf11;">Book Now</button> <?php
@@ -881,7 +881,7 @@ function showSlides() {
 								<h3><span>$</span>320</h3>                                                                                                                
                                                                 <?php     
                                                                 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){?>
-								<a href="admin/reservation.php" >Book Now</a><?php
+								<a href="admin/cafeReservation.php" >Book Now</a><?php
                                                                 }
                                                                 else {
                                                                 ?>  <button onclick="document.getElementById('id01').style.display='block'" style="font-size: 0.9em; color: #000000;padding: 0.5em 2em;background: #ffce14;text-decoration: none;border: 2px solid #ecbf11;">Book Now</button> <?php
