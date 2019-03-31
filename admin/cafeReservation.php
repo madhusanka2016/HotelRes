@@ -138,16 +138,16 @@ $Page_title = 'RESERVATION HORTAINRISE HOTEL - Cafetaria';
                         <div class="panel-body">
 								<div class="form-group">
                                             <label>Time Of Resercation*</label>
-                                            <select name="thall"  class="form-control" required>
+                                            <select name="type"  class="form-control" required>
 												<option value selected ></option>
-                                                <option value="3">3 Hours(Rs.5000/=)</option>
-                                                <option value="5">5 Hours(Rs.10000/=)</option>
-												<option value="12">Half Day(Rs.13000/=)</option>
-												<option value="6">Evening(Rs.15000/=)</option>
-                                                <option value="24">Full Day(Rs.20000/=)</option>
+                                                <option value="3">3 Hours (Rs.5000/=)</option>
+                                                <option value="5">5 Hours (Rs.10000/=)</option>
+												<option value="12">Half Day (Rs.13000/=)</option>
+												<option value="6">Evening (Rs.15000/=)</option>
+                                                <option value="24">Full Day (Rs.20000/=)</option>
                                             </select>
                               </div>
-							  <
+							  
 							 
 							 
 							  
@@ -158,7 +158,7 @@ $Page_title = 'RESERVATION HORTAINRISE HOTEL - Cafetaria';
                                </div>
 							   <div class="form-group">
                                             <label>Check-In-Time</label>
-                                            <input name="cintime" type ="time-local" class="form-control">
+                                            <input name="cintime" type ="time" class="form-control">
                                             
                                </div>
                        </div>
@@ -192,10 +192,10 @@ $Page_title = 'RESERVATION HORTAINRISE HOTEL - Cafetaria';
 									$data = mysqli_fetch_array($rs, MYSQLI_NUM);
 																	
 										$new ="Not Conform";
-										$newUser="INSERT INTO `banquetbook`(`Title`, `FName`, `LName`, `Email`, `National`, `Country`, `Phone`, `THall`, `Farrange`,"
-                                                                                        . " `NRoom`, `Light`, `cinDate`, `cinTime`,`stat`) VALUES "
+										$newUser="INSERT INTO `cafebook`(`Title`, `FName`, `LName`, `Email`, `National`, `Country`, `Phone`, `Type`"
+                                                                                        . ", `cinDate`, `cinTime`,`stat`) VALUES "
                                                                                         . "('$_POST[title]','$_POST[fname]','$_POST[lname]','$_POST[email]','$_POST[nation]','$_POST[country]','$_POST[phone]',"
-                                                                                        . "'$_POST[thall]','$_POST[farrange]','$_POST[nhall]','$_POST[light]','$_POST[cindate]','$_POST[cintime]','$new')";
+                                                                                        . "'$_POST[type]','$_POST[cindate]','$_POST[cintime]','$new')";
 										if (mysqli_query($con,$newUser))
 										{echo "<script type='text/javascript'> alert('Your Booking application has been sent')</script>";	
 										}
@@ -210,7 +210,7 @@ $Page_title = 'RESERVATION HORTAINRISE HOTEL - Cafetaria';
 									$rs1 = mysqli_query($con,$getid);
 									$data1 = mysqli_fetch_array($rs1, MYSQLI_NUM);
                                                                         $sid = $data1['id'];
-											echo "<script type='text/javascript'> window.location.href = 'banquetpay.php?sid=$_POST[email]' </script>";                                                                                                               
+											echo "<script type='text/javascript'> window.location.href = 'cafePay.php?sid=$_POST[email]' </script>";                                                                                                               
                                                                         }             
                                                                         } ?>
 						</form>

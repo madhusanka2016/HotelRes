@@ -82,11 +82,11 @@ $sid = $row['id'];
                     <ul class="nav nav-pills nav-stacked">
                         <li class="active">
                             <form method="POST" id="checkout">
-                                <button class="btn btn-info form-control" type="button" onclick="location.href='showpaypool.php?pid=<?php echo $sid; ?>'"><span class="badge"><span class="glyphicon glyphicon-usd"></span> Make Payment</button>
+                                <button class="btn btn-info form-control" type="button" onclick="location.href='showpaycafe.php?pid=<?php echo $sid; ?>'"><span class="badge"><span class="glyphicon glyphicon-usd"></span> Make Payment</button>
                             </form>
                             </li>
                         
-                        <li class="active"><button class="btn btn-default form-control" onclick="location.href='poolReservation.php'"><span class="badge pull-right"><span class="glyphicon glyphicon-remove"></span></span>Cancel</button>
+                        <li class="active"><button class="btn btn-default form-control" onclick="location.href='cafeReservation.php'"><span class="badge pull-right"><span class="glyphicon glyphicon-remove"></span></span>Cancel</button>
                         </li>
                     </ul>
                     <br/>

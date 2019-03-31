@@ -140,14 +140,14 @@ $Page_title = 'RESERVATION HORTAINRISE HOTEL - Swimming Pool';
                                             <label>Time Of Resercation*</label>
                                             <select name="type"  class="form-control" required>
 												<option value selected ></option>
-                                                <option value="1">1 Hour(Rs.250/=)</option>
-                                                <option value="2">2 Hours(Rs.500/=)</option>
-												<option value="5">5 Hours(Rs.1000/=)</option>
-												<option value="24">Full Day(Rs.2500/=)</option>
+                                                <option value="1">1 Hour (Rs.250/=)</option>
+                                                <option value="2">2 Hours (Rs.500/=)</option>
+												<option value="5">5 Hours (Rs.1000/=)</option>
+												<option value="24">Full Day (Rs.2500/=)</option>
                                                 
                                             </select>
                               </div>
-							  <
+							  
 							 
 							 
 							  
@@ -158,7 +158,7 @@ $Page_title = 'RESERVATION HORTAINRISE HOTEL - Swimming Pool';
                                </div>
 							   <div class="form-group">
                                             <label>Check-In-Time</label>
-                                            <input name="cintime" type ="time-local" class="form-control">
+                                            <input name="cintime" type ="time" class="form-control">
                                             
                                </div>
                        </div>

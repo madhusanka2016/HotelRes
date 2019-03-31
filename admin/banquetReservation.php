@@ -192,7 +192,7 @@ $Page_title = 'RESERVATION HORTAINRISE HOTEL';
                                </div>
 							   <div class="form-group">
                                             <label>Check-In-Time</label>
-                                            <input name="cintime" type ="time-local" class="form-control">
+                                            <input name="cintime" type ="time" class="form-control">
                                             
                                </div>
                        </div>
