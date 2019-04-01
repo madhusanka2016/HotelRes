@@ -97,7 +97,7 @@
                             echo'
                         
                             <li>
-                        <a href="attendance.php"><i class="fa fa-sign-out fa-fw"></i> Employee Salary</a>
+                        <a href="salary.php"><i class="fa fa-sign-out fa-fw"></i> Employee Salary</a>
                     </li>
                             
                             ';

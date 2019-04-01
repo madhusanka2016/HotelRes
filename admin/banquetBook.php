@@ -14,7 +14,7 @@ $sql2 = "SELECT * FROM login WHERE id = '$user_id'";
 $result2 = mysqli_query($con, $sql2);
 $userRow = mysqli_fetch_array($result2, MYSQLI_ASSOC);
 
-if ($userRow['role'] == "admin") {
+if ($userRow['role'] == "user") {
     header("location:home.php");
 }
 }

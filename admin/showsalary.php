@@ -1,6 +1,54 @@
 <?php
 include('db.php');
+if(isset($_POST['print'])){
+    $empid = $_POST['emp'];
+    $month = $_POST['month'];
+    $year = $_POST['year'];
 
+    if($month=='1') {
+        $monthdis ='January';
+    }
+    elseif($month=='2') {
+        $monthdis ="February";
+    }
+    elseif($month=='3') {
+        $monthdis ="March";
+    }
+    elseif($month=='4') {
+        $monthdis ="April";
+    }
+    elseif($month=='5') {
+        $monthdis ="May";
+    }
+    elseif($month=='6') {
+        $monthdis ="June";
+    }
+    elseif($month=='7') {
+        $monthdis ="July";
+    }
+    elseif($month=='8') {
+        $monthdis ="August";
+    }
+    elseif($month=='9') {
+        $monthdis ="September";
+    }
+    elseif($month=='10') {
+        $monthdis ="October";
+    }
+    elseif($month=='11') {
+        $monthdis ="November";
+    }elseif($month=='12') {
+        $monthdis ="December";
+    }
+                                                
+       
+
+    $sql2 = "SELECT * FROM employee WHERE id = '$empid'";
+    $result2 = mysqli_query($con, $sql2);
+    $userRow = mysqli_fetch_array($result2, MYSQLI_ASSOC);
+    $sid = $userRow['id'];
+
+}
 
 //$email2 = $_REQUEST['sid'];
 $getid = "SELECT max(id) as id FROM roombook";
@@ -9,7 +57,6 @@ $getid = "SELECT max(id) as id FROM roombook";
 $result2 = mysqli_query($con, $getid);
 $row = mysqli_fetch_array($result2, MYSQLI_ASSOC);
 
-$sid = $row['id'];
 // $room = $row['TRoom'];
 // $Bed =  $row['Bed'];
  $ava = "SELECT place FROM room  ";
@@ -189,28 +236,59 @@ $state = $row1['place'];
 
 
 
-        $sql = "select * from roombook where id = '$pid' ";
+        $sql = "select * from employee where id = '$sid' ";
         $re = mysqli_query($con, $sql);
         while ($row = mysqli_fetch_array($re)) {
             $id = $row['id'];
-            $title = $row['Title'];
-            $Fname = $row['FName'];
-            $lname = $row['LName'];
-            $email = $row['Email'];
-            $National = $row['National'];
-            $country = $row['Country'];
-            $phone = $row['Phone'];
-            $room_type = $row['TRoom'];
-            $Bed_type = $row['Bed'];
-            //$Noof_room = $row['Nroom'];
-            $meal_type = $row['Meal'];
-            $cin_date = $row['cin'];
-            $cout_date = $row['cout'];
-            $nodays = $row['nodays'];
+            $empno = $row['emp_no'];
+            $name = $row['name'];
+            $join = $row['join_date'];
+            $state = $row['status'];
+            $designation = $row['designation'];
+            $contact = $row['contact'];
+            if($designation=='admin'){
+                $payrate=200;
+                $nopayrate=200;
+                
+            }
+            elseif($designation=='manager'){
+                $payrate=1500;
+                $nopayrate=200;
+                
+            }
+            elseif($designation=='reception'){
+                $payrate=1200;
+                $nopayrate=150;
+                
+            }
+            else{
+                $payrate=1000;
+                $nopayrate=100;
+                
+            }
+
+            
         }
+        $paytime=$year.'-'.$month;
+        $days = "select * from attendance where emp_id = '$sid' and status='In' and date LIKE '$paytime%' ";
+        $dayrow = mysqli_query($con, $days);
+        $noofdays = 0;
+        while ($row = mysqli_fetch_array($dayrow)) {
+           $noofdays ++;
+            
+        }
+
         ?>
         <header>
-            <h1>Information of Guest</h1>
+            <h1>Monthly Payment For <?php 
+            echo $year;
+            echo ' ';
+            echo $monthdis;
+
+
+            
+            ?>
+            </h1>
             <address >
                 <p>HORTAIN RISE HOTEL,</p>
                 <p>Hortain Plain Road,<br>Nuwaraeliya,<br>Sri Lanka.</p>
@@ -219,7 +297,7 @@ $state = $row1['place'];
             <span><img alt="" src="assets/img/hortain.png"></span>
         </header>
 
-        <form method="post" action="pay.php">
+        <form method="post" action="">
             <input hidden="" value="<?php echo $sid; ?>" name="pid"/>
 
             <a href="../"><input type="button" style="background: #0078A5; color: #fff; padding: 5px"   name="add" value="Back To Home" class="btn btn-primary"> </a>
@@ -232,21 +310,38 @@ $state = $row1['place'];
             <address >
 
                 <p><br></p>
-                <p>Coustomer Name  : -  <?php echo $title . $Fname . " " . $lname; ?><br></p>
+                <p>Employee Name  : -  <?php echo $name ?><br></p>
                 <!-- <p>Availability : -  <?php echo $state; ?><br></p> -->
             </address>
             <table class="meta">
                 <tr>
-                    <th><span >Customer ID</span></th>
-                    <td><span ><?php echo $id; ?> </span></td>
+                    <th><span >Employee No</span></th>
+                    <td><span ><?php echo $empno; ?> </span></td>
                 </tr>
                 <tr>
-                    <th><span >Check in Date</span></th>
-                    <td><span ><?php echo $cin_date; ?> </span></td>
+                    <th><span >Working Days</span></th>
+                    <td><span >20 </span></td>
                 </tr>
                 <tr>
-                    <th><span >Check out Date</span></th>
-                    <td><span ><?php echo $cout_date; ?> </span></td>
+                    <th><span >Present Days</span></th>
+                    <td><span ><?php echo $noofdays; ?> </span></td>
+                </tr>
+                <tr>
+                    <th><span >Absent Days</span></th>
+                    <td><span ><?php echo (20-$noofdays); ?> </span></td>
+                </tr>
+                <tr>
+                    <th><span >Approved Leaves</span></th>
+                    <td><span >3 </span></td>
+                </tr>
+                <tr>
+                    <th><span >NoPay Leaves</span></th>
+                    <td><span ><?php 
+                    $nopay =17-$noofdays;
+                    if($nopay<0){
+                        $nopay = 0;
+                    }
+                    echo $nopay ?> </span></td>
                 </tr>
 
             </table>
@@ -255,13 +350,18 @@ $state = $row1['place'];
 
             <table >
                 <tr> 
-                    <td>Customer phone : -  <?php echo $phone; ?> </td>
+                    <td>Employee Contact Number : -  <?php echo $contact; ?> </td>
 
-                    <td>Customer email : -  <?php echo $email; ?> </td>
+                    <td style="text-transformation:uppercase">Employee Designation : -  <?php echo $designation; ?> </td>
                 </tr>
                 <tr> 
-                    <td>Customer Country : -  <?php echo $country; ?> </td>
-                    <td>Customer National : -  <?php echo $National; ?> </td>
+                    <td>Joined Date : -  <?php echo $join; ?> </td>
+                    <td>Status: -  <?php if($state=='1'){
+                        echo 'Active';
+                    }
+                    else{
+                        echo 'Deactive';
+                    } ?> </td>
                 </tr>
             </table>
             <br>
@@ -269,28 +369,41 @@ $state = $row1['place'];
             <table class="inventory">
                 <thead>
                     <tr>
-                        <th><span >Item</span></th>
+                        <th><span >Reason</span></th>
                         <th><span >No of Days</span></th>
+                        <th><span >Rate</span></th>
+                        <th><span >Total</span></th>
 
                     </tr>
                 </thead>
                 <tbody>
 
                     <tr>
-                        <td><span ><?php echo $room_type; ?></span></td>
-                        <td><span ><?php echo $nodays; ?> </span></td>
+                        <td><span >Payments For Present Days</span></td>
+                        <td><span ><?php echo $noofdays; ?> </span></td>
+                        <td><span >Rs.<?php echo $payrate; ?>.00 </span></td>
+                        <td><span >Rs.<?php $totalpay = $noofdays*$payrate;
+                        
+                        echo $totalpay; ?>.00 </span></td>
 
                     </tr>
                     <tr>
-                        <td><span ><?php echo $Bed_type; ?>  Bed </span></td>
-                        <td><span ><?php echo $nodays; ?></span></td>
+                        <td><span >Deductions For No Pay Leaves</span></td>
+                        <td><span ><?php echo $nopay; ?> </span></td>
+                        <td><span >Rs.<?php echo $nopayrate; ?>.00</span></td>
+                        <td><span >Rs.<?php $totalnopay =$nopay*$nopayrate;
+                        
+                        echo $totalnopay; ?>.00</span></td>
 
                     </tr>
                     <tr>
-                        <td><span ><?php echo $meal_type; ?>  </span></td>
-                        <td><span ><?php echo $nodays; ?></span></td>
+                        <th colspan='3'><span ><b>Total Payment</b></span></th>
+                          <th><span>Rs.<?php $total =$totalpay-$totalnopay;
+                        
+                        echo $total; ?>.00 </span></th>
 
                     </tr>
+                    
                 </tbody>
             </table>
 

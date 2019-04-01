@@ -14,7 +14,7 @@ $userRow = mysqli_fetch_array($result2, MYSQLI_ASSOC);
 if ($userRow['role'] != "admin" || $userRow['role'] != "admin") {
     header("location:home.php");
 }
-$Page_title = 'HORTAINRISE HOTEL';
+$Page_title = 'HORTAINRISE HOTEL - Salary';
 
 
 
@@ -82,7 +82,7 @@ $Page_title = 'HORTAINRISE HOTEL';
 			 <div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
-                           ATTENDANCE <small></small>
+                           Salary <small></small>
                         </h1>
                     </div>
                 </div> 
@@ -93,10 +93,10 @@ $Page_title = 'HORTAINRISE HOTEL';
                 <div class="col-md-5 col-sm-5">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            MARK ATTENDANCE
+                            Employee Salary
                         </div>
                         <div class="panel-body">
-						<form name="form" method="post">
+						<form name="form" method="post" action="showsalary.php">
                             <div class="form-group">
                                             <label>Employee</label>
                                             <select name="emp"  class="form-control" required>
@@ -121,14 +121,43 @@ $Page_title = 'HORTAINRISE HOTEL';
                               </div>
 							  
 								<div class="form-group">
-                                            <label>Status</label>
-                                            <select name="status" class="form-control" required>
-                                                <option value="In">In</option>
-                                                <option value="Out">Out</option>                           
+                                            <label>Year</label>
+                                            <select name="year" class="form-control" required>
+                                                        <option value="2019">2019 </option>
+                                                        <option value="2020">2020 </option>
+                                                        <option value="2021">2021 </option>
+                                                        <option value="2022">2022 </option>
+                                                        <option value="2023">2023 </option>
+                                                        <option value="2024">2024 </option>
+                                                        <option value="2025">2025 </option>
+                                                        <option value="2026">2026 </option>
+                                                        <option value="2027">2027 </option>
+                                                        <option value="2028">2028 </option>
+                                                        <option value="2029">2029 </option>
+                                                        <option value="2030">2030 </option>                         
                                             </select>
                                             
                                </div>
-							 <input type="submit" name="add" value="Mark" class="btn btn-primary"> 
+                               <div class="form-group">
+                                            <label>Month</label>
+                                            <select name="month" class="form-control" required>
+                                            
+                                                        <option value="01" >January </option>
+                                                        <option value="02" >February </option>
+                                                        <option value="03" >March </option>
+                                                        <option value="04" >April </option>
+                                                        <option value="05" >May</option>
+                                                        <option value="06" >June </option>
+                                                        <option value="07" >July </option>
+                                                        <option value="08" >August </option>
+                                                        <option value="09" >September </option>
+                                                        <option value="10" >October </option>
+                                                        <option value="11" >November </option>
+                                                        <option value="12" >December </option>                         
+                                            </select>
+                                            
+                               </div>
+							 <input type="submit" name="print" value="Print" class="btn btn-primary"> 
 							</form>
 							<?php
 							 include('db.php');
@@ -172,7 +201,7 @@ $Page_title = 'HORTAINRISE HOTEL';
                 <div class="col-md-6 col-sm-6">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            ATTENDANCE INFORMATION
+                            Recent Attendance
                         </div>
                         <div class="panel-body">
 								<!-- Advanced Tables -->
