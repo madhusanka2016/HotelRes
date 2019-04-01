@@ -38,6 +38,29 @@
                     </li>
                             
                             ';
+                            echo'
+                        
+                            <li>
+                        <a href="poolbooking.php"><i class="fa fa-bar-chart-o"></i>Swimming Pool Booking</a>
+                    </li>
+                            
+                            ';
+                            echo'
+                        
+                            <li>
+                        <a href="cafebooking.php"><i class="fa fa-bar-chart-o"></i> Cafetaria Booking</a>
+                    </li>
+                            
+                            ';
+                            
+                                echo'
+                            
+                                <li>
+                            <a href="payment.php"><i class="fa fa-qrcode"></i> Payment For Rooms</a>
+                        </li>
+                                
+                                ';
+                           
                         
                         
                             echo'
@@ -48,15 +71,7 @@
                             
                             ';
                         
-                        if ($userRow['role'] == "reception" || $userRow['role'] == "manager") {
-                            echo'
                         
-                            <li>
-                        <a href="payment.php"><i class="fa fa-qrcode"></i> Payment</a>
-                    </li>
-                            
-                            ';
-                        }
                         if ($userRow['role'] == "manager") {
                             echo'
                         

@@ -205,7 +205,7 @@ $sid = $row['id'];
             
             $cindate = $row['cinDate'];
             $cintime = $row['cinTime'];
-            $nodays = $row['nodays'];
+            
         }
         ?>
         <header>
