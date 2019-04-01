@@ -70,6 +70,13 @@
                     </li>
                             
                             ';
+                            echo'
+                        
+                            <li>
+                        <a href="poolPayment.php"><i class="fa fa-qrcode"></i>Payment for Swimming Pool</a>
+                    </li>
+                            
+                            ';
                         
                         
                         if ($userRow['role'] == "manager") {
