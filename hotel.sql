@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 31, 2019 at 05:08 PM
+-- Generation Time: Apr 01, 2019 at 03:58 PM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -54,7 +54,12 @@ INSERT INTO `attendance` (`id`, `date`, `employee`, `emp_id`, `status`, `time`) 
 (17, '2018-11-22', 'John', '1', 'In', '2018-11-22 09:00:24'),
 (18, '2018-11-22', 'Chamal', '35', 'In', '2018-11-22 11:03:20'),
 (19, '2019-03-18', 'John', '1', 'In', '2019-03-18 17:39:32'),
-(20, '2019-03-18', 'John', '1', 'Out', '2019-03-18 17:39:36');
+(20, '2019-03-18', 'John', '1', 'Out', '2019-03-18 17:39:36'),
+(21, '2019-04-01', '', '9', 'In', '2019-04-01 10:52:59'),
+(22, '2019-04-01', 'John', '1', 'In', '2019-04-01 10:53:05'),
+(23, '2019-04-01', 'Chamal', '35', 'In', '2019-04-01 11:01:28'),
+(24, '2019-04-01', 'John', '1', 'Out', '2019-04-01 11:01:33'),
+(25, '2019-04-01', 'Chamal', '35', 'Out', '2019-04-01 13:15:43');
 
 -- --------------------------------------------------------
 
@@ -160,8 +165,18 @@ CREATE TABLE `cafebook` (
   `cinDate` date NOT NULL,
   `cinTime` time(6) NOT NULL,
   `stat` varchar(20) NOT NULL,
-  `nodays` varchar(20) NOT NULL
+  `payment` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cafebook`
+--
+
+INSERT INTO `cafebook` (`id`, `Title`, `FName`, `LName`, `Email`, `National`, `Country`, `Phone`, `Type`, `cinDate`, `cinTime`, `stat`, `payment`) VALUES
+(1, 'Miss.', 'fdgdfgfdg', 'dgdfg', 'cashier@cashier.com', 'Sri Lankan', 'Australia', 55555, '12', '2019-03-01', '12:12:12.000000', 'Conform', 13000),
+(2, 'Miss.', 'fdgdfgfdg', 'dgdfg', 'cashier@cashier.com', 'Sri Lankan', 'Australia', 0, '5', '2019-03-07', '12:12:12.000000', 'Conform', 10000),
+(3, 'Miss.', 'fdgdfgfdg', 'dgdfg', 'cashier@cashier.com', 'Sri Lankan', 'Australia', 0, '3', '2019-03-07', '12:12:12.000000', 'Conform', 5000),
+(4, 'Dr.', 'gfhfh', 'fh', 'marking1@gmail.com', 'Sri Lankan', 'Albania', 0, '3', '2019-03-14', '13:01:00.000000', 'Not Conform', 0);
 
 -- --------------------------------------------------------
 
@@ -209,7 +224,8 @@ INSERT INTO `employee` (`id`, `emp_no`, `name`, `join_date`, `status`, `designat
 (1, 'E1001', 'John', 'Accountant', 1, '', '011484613'),
 (9, '', '', '2018-11-21', 1, '', ''),
 (35, 'E1002', 'Chamal', '2018-11-22', 1, 'It assistant', '0723562070'),
-(36, '', '', '2019-03-23', 1, '', '');
+(36, '', '', '2019-03-23', 1, 'admin', ''),
+(37, '11', 'tretetr', '2019-04-01', 1, 'admin', '0000fg');
 
 -- --------------------------------------------------------
 
@@ -308,6 +324,8 @@ INSERT INTO `payment` (`id`, `title`, `fname`, `lname`, `troom`, `tbed`, `nroom`
 (30, 'Dr.', 'hjytjy', 'tuiyuiyui', 'Superior Room', 'Triple', 1, '2019-03-06', '2019-03-19', 4160.00, 4784.00, 499.20, 'Full Board', 124.80, 13),
 (31, 'Dr.', 'hjytjy', 'tuiyuiyui', 'Deluxe Room', 'Double', 1, '2019-03-27', '2019-03-21', -1320.00, -1399.20, -52.80, 'Breakfast', -26.40, -6),
 (35, 'Miss.', 'dsadsad', 'sdfsdf', 'Superior Room', 'Double', 1, '2019-03-13', '2019-03-29', 5120.00, 5222.40, 0.00, 'Room only', 102.40, 16),
+(36, 'Miss.', 'sdadad', 'sdffs', 'Deluxe Room', 'Double', 1, '2019-03-21', '2019-03-19', -440.00, -448.80, 0.00, 'Room only', -8.80, -2),
+(37, 'Miss.', 'sdadad', 'sdffs', 'Deluxe Room', 'Single', 1, '2019-03-12', '2019-03-19', 1540.00, 1555.40, 0.00, 'Room only', 15.40, 7),
 (38, 'Miss.', 'New', 'sdffs', 'Deluxe Room', 'Double', 1, '2019-03-07', '2019-03-28', 4620.00, 4897.20, 184.80, 'Breakfast', 92.40, 21),
 (39, 'Miss.', 'New', 'sdffs', 'Deluxe Room', 'Double', 1, '2019-03-20', '2019-03-28', 1760.00, 1795.20, 0.00, 'Room only', 35.20, 8);
 
@@ -330,15 +348,15 @@ CREATE TABLE `poolbook` (
   `cinDate` date NOT NULL,
   `cinTime` time(6) NOT NULL,
   `stat` varchar(20) NOT NULL,
-  `nodays` varchar(20) NOT NULL
+  `payment` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `poolbook`
 --
 
-INSERT INTO `poolbook` (`id`, `Title`, `FName`, `LName`, `Email`, `National`, `Country`, `Phone`, `Type`, `cinDate`, `cinTime`, `stat`, `nodays`) VALUES
-(1, 'Dr.', 'rtgr', 'grt', 'smaaa@gmail.com', 'Sri Lankan', 'Bahamas', 0, '2', '2019-03-07', '12:12:12.000000', 'Not Conform', '');
+INSERT INTO `poolbook` (`id`, `Title`, `FName`, `LName`, `Email`, `National`, `Country`, `Phone`, `Type`, `cinDate`, `cinTime`, `stat`, `payment`) VALUES
+(1, 'Dr.', 'rtgr', 'grt', 'smaaa@gmail.com', 'Sri Lankan', 'Bahamas', 0, '2', '2019-03-07', '12:12:12.000000', 'Conform', 0);
 
 -- --------------------------------------------------------
 
@@ -370,8 +388,8 @@ INSERT INTO `room` (`id`, `type`, `bedding`, `place`, `cusid`) VALUES
 (13, 'Single Room', 'Single', 'Free', NULL),
 (14, 'Single Room', 'Double', 'Free', NULL),
 (15, 'Guest House', 'Triple', 'Free', NULL),
-(16, 'Deluxe Room', 'Single', 'NotFree', 26),
-(17, 'Deluxe Room', 'Double', 'NotFree', 38),
+(16, 'Deluxe Room', 'Single', 'NotFree', 37),
+(17, 'Deluxe Room', 'Double', 'NotFree', 36),
 (18, 'Guest House', 'Quad', 'NotFree', 24),
 (19, 'Deluxe Room', 'Quad', 'Free', NULL);
 
@@ -406,7 +424,6 @@ CREATE TABLE `roombook` (
 
 INSERT INTO `roombook` (`id`, `Title`, `FName`, `LName`, `Email`, `National`, `Country`, `Phone`, `TRoom`, `Bed`, `NRoom`, `Meal`, `cin`, `cout`, `stat`, `nodays`) VALUES
 (24, 'Dr.', 'Ravindu', 'Koshila', 'abc@gmail.com', 'Sri Lankan', 'Bangladesh', '077-4492476', 'Guest House', 'Quad', '1', 'Room only', '2018-12-15', '2018-12-16', 'Conform', 1),
-(25, 'Dr.', 'chamalj', 'nkvnern', 'test@gmail.com', 'Sri Lankan', 'Sri Lanka', '0704127845', 'Deluxe Room', 'Single', '1', 'Room only', '2019-01-24', '2019-01-31', 'Conform', 7),
 (26, 'Mrs.', 'Amanda', 'Silva', 'amanda@gmail.com', 'Sri Lankan', 'Sri Lanka', '0774521788', 'Deluxe Room', 'Single', '1', 'Half Board', '2019-01-31', '2019-02-01', 'Conform', 1),
 (27, 'Dr.', 'ravi', 'darchana', 'ravi@gail.com', 'Sri Lankan', 'Sri Lanka', '077-0461482', 'Superior Room', 'Single', '1', 'Room only', '2019-02-15', '2019-02-15', 'Conform', 0),
 (28, 'Miss.', 'fdgdfgdf', 'sdffs', 'sm@gmail.com', 'Sri Lankan', 'Bahamas', 'sdfs', 'Deluxe Room', 'Double', '1', 'Room only', '0000-00-00', '0000-00-00', 'Conform', NULL),
@@ -416,8 +433,8 @@ INSERT INTO `roombook` (`id`, `Title`, `FName`, `LName`, `Email`, `National`, `C
 (33, 'Dr.', 'hjytjy', 'tuiyuiyui', 'admihhn@admin.com', 'Sri Lankan', 'Bangladesh', 'ytryry', 'Superior Room', 'Double', '1', 'Room only', '2019-03-06', '2019-03-21', 'Not Conform', 15),
 (34, 'Dr.', 'hjytjy', 'tuiyuiyui', 'admihhn@admin.com', 'Sri Lankan', 'Bangladesh', 'ytryry', 'Deluxe Room', 'Double', '1', 'Breakfast', '2019-03-05', '2019-03-13', 'Not Conform', 8),
 (35, 'Miss.', 'dsadsad', 'sdfsdf', 'marking1@gmail.com', 'Sri Lankan', 'Albania', 'dsad', 'Superior Room', 'Double', '1', 'Room only', '2019-03-13', '2019-03-29', 'Conform', 16),
-(36, 'Miss.', 'sdadad', 'sdffs', 'sm@gmail.com', 'Sri Lankan', 'Barbados', 'wfdsfs', 'Deluxe Room', 'Double', '1', 'Room only', '2019-03-21', '2019-03-19', 'Not Conform', -2),
-(37, 'Miss.', 'sdadad', 'sdffs', 'sm@gmail.com', 'Sri Lankan', 'Barbados', 'wfdsfs', 'Deluxe Room', 'Single', '1', 'Room only', '2019-03-12', '2019-03-19', 'Not Conform', 7),
+(36, 'Miss.', 'sdadad', 'sdffs', 'sm@gmail.com', 'Sri Lankan', 'Barbados', 'wfdsfs', 'Deluxe Room', 'Double', '1', 'Room only', '2019-03-21', '2019-03-19', 'Conform', -2),
+(37, 'Miss.', 'sdadad', 'sdffs', 'sm@gmail.com', 'Sri Lankan', 'Barbados', 'wfdsfs', 'Deluxe Room', 'Single', '1', 'Room only', '2019-03-12', '2019-03-19', 'Conform', 7),
 (38, 'Miss.', 'New', 'sdffs', 'cashier@cashier.com', 'Sri Lankan', 'Barbados', 'aefdsdf', 'Deluxe Room', 'Double', '1', 'Breakfast', '2019-03-07', '2019-03-28', 'Conform', 21),
 (39, 'Miss.', 'New', 'sdffs', 'cashier@cashier.com', 'Sri Lankan', 'Barbados', 'aefdsdf', 'Deluxe Room', 'Double', '1', 'Room only', '2019-03-20', '2019-03-28', 'Conform', 8);
 
@@ -552,7 +569,7 @@ ALTER TABLE `tempuser`
 -- AUTO_INCREMENT for table `attendance`
 --
 ALTER TABLE `attendance`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `banquet`
@@ -576,7 +593,7 @@ ALTER TABLE `banquetpayment`
 -- AUTO_INCREMENT for table `cafebook`
 --
 ALTER TABLE `cafebook`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `contact`
@@ -588,7 +605,7 @@ ALTER TABLE `contact`
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `login`

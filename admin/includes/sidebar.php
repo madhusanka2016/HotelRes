@@ -77,6 +77,13 @@
                     </li>
                             
                             ';
+                            echo'
+                        
+                            <li>
+                        <a href="cafePayment.php"><i class="fa fa-qrcode"></i>Payment for Cafetaria</a>
+                    </li>
+                            
+                            ';
                         
                         
                         if ($userRow['role'] == "manager") {
