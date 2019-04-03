@@ -5,3 +5,15 @@ booking summary report
 customer details- Need to update-delete
 create all the reservations(room/banquet/pool/cafetaria)
 user registration
+cafebooking php error
+reject
+customer edit
+print
+navigation 
+search emp
+add room update delete
+profit daily month yearly
+
+
+
+
