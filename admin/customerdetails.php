@@ -36,7 +36,7 @@ ob_start();
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
         <link href="assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
     </head>
-    <body>
+    <body id="print">
         <div id="wrapper">
             <nav class="navbar navbar-default top-navbar" role="navigation">
                 <div class="navbar-header">
@@ -129,6 +129,7 @@ ob_start();
                                                     <th>National</th>
                                                     <th>Country</th>
                                                     <th>Phone</th>
+                                                    <th>Edit</th>
 
                                                 </tr>
                                             </thead>
@@ -139,8 +140,72 @@ ob_start();
                     $sql = "SELECT * FROM roombook";
                     $re = mysqli_query($con, $sql);
                     while ($row = mysqli_fetch_array($re)) {
+
                         
                         $id = $row['id'];
+                        echo '
+                        
+                        
+                        <div class="modal fade" id="edit'. $row['id'] .'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                        <h4 class="modal-title" id="myModalLabel">Edit Customer Details - '. $row['id'] .'</h4>
+                                    </div>
+                                    <form method="post">
+                                            
+                                        <div class="modal-body">
+                                                <div class="form-group">
+                                                <label>Title*</label>
+                                                <select name="title" class="form-control" required >
+                                                    <option value selected ></option>
+                                                    <option value="Dr.">Dr.</option>
+                                                    <option value="Miss.">Miss.</option>
+                                                    <option value="Mr.">Mr.</option>
+                                                    <option value="Mrs.">Mrs.</option>
+                                                    <option value="Prof.">Prof.</option>
+                                                    <option value="Rev .">Rev .</option>
+                                                    <option value="Rev . Fr">Rev . Fr .</option>
+                                                </select>
+                                                </div>
+                                                <div class="form-group">
+                                            <label>First Name</label>
+                                            <input name="fname" class="form-control" required>
+                                            
+                                            </div>
+                                            <div class="form-group">
+                                                            <label>Last Name</label>
+                                                            <input name="lname" class="form-control" required>
+                                                            
+                                            </div>
+                                            <div class="form-group">
+                                                            <label>Email</label>
+                                                            <input name="email" type="email" class="form-control" required>
+                                                            
+                                            </div>
+                                            <div class="form-group">
+                                                            <label>Nationality*</label>
+                                                            <label class="radio-inline">
+                                                                <input type="radio" name="nation"  value="Sri Lankan" checked="">Sri Lankan
+                                                            </label>
+                                                            <label class="radio-inline">
+                                                                <input type="radio" name="nation"  value="Non Sri Lankan ">Non Sri Lankan 
+                                                            </label>
+                                        
+                                                </div>
+                                            
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                                            <input type="submit" name="in" value="Add" class="btn btn-primary">
+                                                </form>
+
+                                        </div>
+                                </div>
+                            </div>
+                       ';
 
     if ($id % 2 == 1) {
         echo"<tr class='gradeC'>
@@ -153,6 +218,7 @@ ob_start();
 													<td>" . $row['National'] . "</td>
                                                                                                         <td>" . $row['Country'] . "</td>
                                                                                                         <td>" . $row['Phone'] . "</td>
+                                                                                                        <td><button class='btn btn-primary btn' data-toggle='modal' data-target='#edit". $row['id'] ."'> Edit </buttpn></td>
 													</tr>";
     } else {
         echo"<tr class='gradeU'>
@@ -163,7 +229,8 @@ ob_start();
 													<td>" . $row['Email'] . "</td>
 													<td>" . $row['National'] . "</td>
 													<td>" . $row['Country'] . "</td>
-													<td>" . $row['Phone'] . "</td>													
+                                                    <td>" . $row['Phone'] . "</td>	
+                                                    <td><button class='btn btn-primary btn' data-toggle='modal' data-target='#edit". $row['id'] ."'> Edit </buttpn></td>
 													</tr>";
                                       
                                                     }
@@ -183,7 +250,7 @@ ob_start();
                                             </tbody>
                                         </table>
                                     </div>
-                                         <input type="button" onclick="printel()" name="add" value="Print" class="btn btn-primary">                                               
+                                        <a href="customerdetailsprint.php"> <input type="button" name="add" value="Print" class="btn btn-primary">   </a>                                            
                                 </div>
                             </div>
                             <!--End Advanced Tables -->

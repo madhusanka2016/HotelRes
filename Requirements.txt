@@ -1,18 +1,18 @@
 
 Profit Report- Need a seacrh bar to search in daily/monthly/early
-employee salary handling 
-booking summary report
-customer details- Need to update-delete
-create all the reservations(room/banquet/pool/cafetaria)
-user registration
+employee salary handling Ok
+booking summary report Ok
+customer details- Need to update-delete 
+create all the reservations(room/banquet/pool/cafetaria) Ok
+user registration Ok
 cafebooking php error
-reject
+reject Ok
 customer edit
 print
 navigation 
-search emp
+search emp Ok
 add room update delete
-profit daily month yearly
+
 
 
 
