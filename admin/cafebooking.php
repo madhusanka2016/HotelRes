@@ -195,6 +195,125 @@ $Page_title = 'Cafetaria Booking';
                                     </div>
                                 </div>
 								<?php
+						include ('db.php');
+						$sql = "select * from cafebook";
+						$re = mysqli_query($con,$sql);
+						$c =0;
+						while($row=mysqli_fetch_array($re) )
+						{
+								$new = $row['stat'];
+								$cin = $row['cinDate'];
+								$id = $row['id'];
+								if($new=="Reject")
+								{
+									$c = $c + 1;
+									
+								
+								}
+						
+						}
+						
+									
+									
+
+						
+				?>
+
+					<div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            
+                        </div>
+                        <div class="panel-body">
+                            <div class="panel-group" id="accordion">
+							
+							<div class="panel panel-primary">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+											<button class="btn btn-default" type="button">
+												 Rejected Cafetaria Bookings  <span class="badge"><?php echo $c ; ?></span>
+											</button>
+											</a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseTwo" class="panel-collapse in" style="height: auto;">
+                                        <div class="panel-body">
+                                           <div class="panel panel-default">
+                        
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Country</th>
+											<th>Total Time</th>
+											<th>Date</th>
+											<th>Time</th>
+											<th>Status</th>
+											<th>More</th>
+											
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+									<?php
+									$tsql = "select * from cafebook";
+									$tre = mysqli_query($con,$tsql);
+									while($trow=mysqli_fetch_array($tre) )
+									{	
+										$co =$trow['stat']; 
+										if($co=="Reject")
+										{
+											echo"<tr>
+												<th>".$trow['id']."</th>
+												<th>".$trow['FName']." ".$trow['LName']."</th>
+												<th>".$trow['Email']."</th>
+												<th>".$trow['Country']."</th><th>";
+												if($trow['Type'] == '3'){
+													echo'3 Hours Booking';
+												}
+												elseif($trow['Type'] == '5'){
+													echo'5 Hours Booking';
+												}
+												elseif($trow['Type'] == '12'){
+													echo'Half Day Booking';
+												}
+												elseif($trow['Type'] == '6'){
+													echo'Evening Booking';
+												}
+												elseif($trow['Type'] == '24'){
+													echo'Full Day Booking';
+												} 
+												echo"
+												</th>
+												
+												<th>".$trow['cinDate']."</th>
+												<th>".$trow['cinTime']."</th>
+												<th>".$trow['stat']."</th>
+												
+												<th><a href='cafebook.php?rid=".$trow['id']." ' class='btn btn-primary'>Action</a></th>
+												</tr>";
+										}	
+									
+									}
+									?>
+                                        
+                                    </tbody>
+                                </table>
+								
+                            </div>
+                        </div>
+                    </div>
+                      <!-- End  Basic Table  --> 
+                                        </div>
+                                    </div>
+                                </div>
+								<?php
 								
 								
 						

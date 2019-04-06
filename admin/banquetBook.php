@@ -507,7 +507,7 @@ $Page_title = 'Administrator';
 													if(mysqli_query($con,$rpsql))
 													{
 													echo "<script type='text/javascript'> alert('Booking Conform')</script>";
-													echo "<script type='text/javascript'> window.location='banquetbook.php'</script>";
+													echo "<script type='text/javascript'> window.location='home.php'</script>";
 													}
 													
 													
@@ -516,7 +516,15 @@ $Page_title = 'Administrator';
 									}
 							
 								
-					}		
+					}	
+					else{
+						$urb = "UPDATE `banquetbook` SET `stat`='$st' WHERE id = '$id'";
+						if( mysqli_query($con,$urb)){
+							echo "<script type='text/javascript'> alert('Booking Rejected')</script>";
+													
+							echo "<script type='text/javascript'> window.location='home.php'</script>";
+						}
+					}	
 								
 									if($f1=="NO" )
 								{

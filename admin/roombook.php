@@ -237,6 +237,7 @@ $Page_title = 'Administrator';
 														<select name="conf"class="form-control">
 															<option value selected>	</option>
 															<option value="Conform">Conform</option>
+															<option value="Reject">Reject</option>
 															
 															
 														</select>
@@ -551,7 +552,7 @@ $Page_title = 'Administrator';
 															if(mysqli_query($con,$rpsql))
 															{
 															echo "<script type='text/javascript'> alert('Booking Conform')</script>";
-															echo "<script type='text/javascript'> window.location='roombook.php'</script>";
+															echo "<script type='text/javascript'> window.location='home.php'</script>";
 															}
 															
 															
@@ -561,6 +562,13 @@ $Page_title = 'Administrator';
 									
                                         
 							}	
+							else{
+								$urb = "UPDATE `roombook` SET `stat`='$st' WHERE id = '$id'";
+								if( mysqli_query($con,$urb)){
+									echo "<script type='text/javascript'> alert('Booking Rejected')</script>";
+															echo "<script type='text/javascript'> window.location='home.php'</script>";
+								}
+							}
 					
 						}
 					

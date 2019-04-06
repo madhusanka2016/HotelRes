@@ -246,6 +246,7 @@ $Page_title = 'Pool Booking';
 														<select name="conf"class="form-control">
 															<option value selected>	</option>
 															<option value="Conform">Conform</option>
+															<option value="Reject">Reject</option>
 															
 															
 														</select>
@@ -366,54 +367,32 @@ $Page_title = 'Pool Booking';
 									
 								 if( mysqli_query($con,$urb))
 											{	
-												 echo "<script type='text/javascript'> alert('Guest Room booking is conform')</script>";
+												 echo "<script type='text/javascript'> alert('Pool booking is conform')</script>";
 												echo "<script type='text/javascript'> window.location='poolbooking.php'</script>";
 												
 												
 												
-												//  $type_of_room = 0;       
-												// 		if($troom=="Superior Room")
-												// 		{
-												// 			$type_of_room = 320;
-														
-												// 		}
-												// 		else if($troom=="Deluxe Room")
-												// 		{
-												// 			$type_of_room = 220;
-												// 		}
-												// 		else if($troom=="Guest House")
-												// 		{
-												// 			$type_of_room = 180;
-												// 		}
-												// 		else if($troom=="Single Room")
-												// 		{
-												// 			$type_of_room = 150;
-												// 		}
-														
-														
-														
-														
 											
-															
-												// 			//echo "<script type='text/javascript'> alert('$count_date')</script>";
-												// 		$psql = "INSERT INTO `payment`(`id`, `title`, `fname`, `lname`, `troom`, `tbed`, `nroom`, `cin`, `cout`, `ttot`,`meal`, `mepr`, `btot`,`fintot`,`noofdays`) VALUES ('$id','$title','$fname','$lname','$troom','$bed','$nroom','$cin','$cout','$ttot','$meal','$mepr','$btot','$fintot','$days')";
-														
-												// 		if(mysqli_query($con,$psql))
-												// 		{	$notfree="NotFree";
-												// 			$rpsql = "UPDATE `room` SET `place`='$notfree',`cusid`='$id' where bedding ='$bed' and type='$troom' ";
-												// 			if(mysqli_query($con,$rpsql))
-												// 			{
-												// 			echo "<script type='text/javascript'> alert('Booking Conform')</script>";
-												// 			echo "<script type='text/javascript'> window.location='roombook.php'</script>";
-												// 			}
-															
-															
-												// 		}
 												
 											}
 									
                                         
 							}	
+							elseif($st=="Reject"){
+								$urb = "UPDATE `poolbook` SET `stat`='$st' WHERE id = '$id'";
+									
+								 if( mysqli_query($con,$urb))
+											{	
+												 echo "<script type='text/javascript'> alert('Pool booking is Rejected')</script>";
+												echo "<script type='text/javascript'> window.location='poolbooking.php'</script>";
+												
+												
+												
+											
+												
+											}
+
+							}
 					
 						}
 					
