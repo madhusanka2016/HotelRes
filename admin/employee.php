@@ -109,8 +109,18 @@ ob_start();
 
                     <?php
                     include ('db.php');
-                    $sql = "SELECT * FROM `employee` where status = 1";
-                    $re = mysqli_query($con, $sql)
+                    if(isset($_POST['search'])){
+                        $empname = $_POST['searchbox'];
+                        
+                        $sql = "SELECT * FROM `employee` where status = 1 and name Like '%$empname%'";
+                        $re = mysqli_query($con, $sql)  ;
+
+                    }
+                    else{
+                        $sql = "SELECT * FROM `employee` where status = 1";
+                        $re = mysqli_query($con, $sql)  ;      
+                    }
+                    
                     ?>
 
                     <div class="row">
@@ -118,6 +128,14 @@ ob_start();
                             <!-- Advanced Tables -->
                             <div class="panel panel-default">
                                 <div class="panel-body">
+                                <div class="search-container">
+                    <form action="employee.php" method="post">
+                    <div class="form-group">
+                <input type="text" placeholder="Search.." name="searchbox" >
+                <button type="submit" class="btn btn-default" name="search"><i class="fa fa-search"></i></button>
+                </div>
+                        </form>
+                            </div>
                                     <div class="table-responsive">
                                         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                             <thead>
