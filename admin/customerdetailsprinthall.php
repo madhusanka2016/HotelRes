@@ -198,7 +198,7 @@ tr:hover .cut { opacity: 1; }
                     
                     
                     
-                    $sql = "SELECT * FROM roombook";
+                    $sql = "SELECT * FROM banquetbook";
                     $re = mysqli_query($con,$sql);
                     while($row=mysqli_fetch_array($re))
                     {

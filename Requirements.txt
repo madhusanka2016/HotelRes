@@ -7,7 +7,7 @@ create all the reservations(room/banquet/pool/cafetaria) Ok
 user registration Ok
 cafebooking php error
 reject Ok
-customer edit OK
+customer edit OK - Navigation changed 
 print OK
 navigation Making
 

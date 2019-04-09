@@ -297,7 +297,7 @@ ob_start();
                                             </tbody>
                                         </table>
                                     </div>
-                                        <a href="customerdetailsprint.php"> <input type="button" name="add" value="Print" class="btn btn-primary">   </a>                                            
+                                        <a href="customerdetailsprintcafe.php"> <input type="button" name="add" value="Print" class="btn btn-primary">   </a>                                            
                                 </div>
                             </div>
                             <!--End Advanced Tables -->
