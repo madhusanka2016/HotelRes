@@ -9,7 +9,8 @@ cafebooking php error
 reject Ok
 customer edit OK
 print OK
-navigation 
+navigation Making
+
 search emp Ok
 add room update delete
 
