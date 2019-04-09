@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 01, 2019 at 03:58 PM
+-- Generation Time: Apr 09, 2019 at 06:06 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -174,7 +174,7 @@ CREATE TABLE `cafebook` (
 
 INSERT INTO `cafebook` (`id`, `Title`, `FName`, `LName`, `Email`, `National`, `Country`, `Phone`, `Type`, `cinDate`, `cinTime`, `stat`, `payment`) VALUES
 (1, 'Miss.', 'fdgdfgfdg', 'dgdfg', 'cashier@cashier.com', 'Sri Lankan', 'Australia', 55555, '12', '2019-03-01', '12:12:12.000000', 'Conform', 13000),
-(2, 'Miss.', 'fdgdfgfdg', 'dgdfg', 'cashier@cashier.com', 'Sri Lankan', 'Australia', 0, '5', '2019-03-07', '12:12:12.000000', 'Conform', 10000),
+(2, 'Miss.', 'fdgdfgfdg', 'dgdfg', 'cashier@cashier.com', 'Sri Lankan', 'Australia', 0, '5', '2019-03-07', '12:12:12.000000', 'Reject', 10000),
 (3, 'Miss.', 'fdgdfgfdg', 'dgdfg', 'cashier@cashier.com', 'Sri Lankan', 'Australia', 0, '3', '2019-03-07', '12:12:12.000000', 'Conform', 5000),
 (4, 'Dr.', 'gfhfh', 'fh', 'marking1@gmail.com', 'Sri Lankan', 'Albania', 0, '3', '2019-03-14', '13:01:00.000000', 'Not Conform', 0);
 
@@ -222,7 +222,7 @@ CREATE TABLE `employee` (
 
 INSERT INTO `employee` (`id`, `emp_no`, `name`, `join_date`, `status`, `designation`, `contact`) VALUES
 (1, 'E1001', 'John', 'Accountant', 1, '', '011484613'),
-(9, '', '', '2018-11-21', 1, '', ''),
+(9, '', '', '2018-11-21', 0, '', ''),
 (35, 'E1002', 'Chamal', '2018-11-22', 1, 'It assistant', '0723562070'),
 (36, '', '', '2019-03-23', 1, 'admin', ''),
 (37, '11', 'tretetr', '2019-04-01', 1, 'admin', '0000fg');
@@ -248,7 +248,8 @@ CREATE TABLE `login` (
 INSERT INTO `login` (`id`, `usname`, `pass`, `role`, `active`) VALUES
 (1, 'Admin', '1234', 'admin', 1),
 (6, 'Manager', '1234', 'manager', 1),
-(7, 'Reception', '1234', 'reception', 1);
+(7, 'Reception', '1234', 'reception', 1),
+(8, 'ssds', '1234', 'admin', 1);
 
 -- --------------------------------------------------------
 
@@ -323,6 +324,9 @@ INSERT INTO `payment` (`id`, `title`, `fname`, `lname`, `troom`, `tbed`, `nroom`
 (29, 'Dr.', 'New', 'New', 'Deluxe Room', 'Double', 1, '2019-03-06', '2019-03-05', -220.00, -224.40, 0.00, 'Room only', -4.40, -1),
 (30, 'Dr.', 'hjytjy', 'tuiyuiyui', 'Superior Room', 'Triple', 1, '2019-03-06', '2019-03-19', 4160.00, 4784.00, 499.20, 'Full Board', 124.80, 13),
 (31, 'Dr.', 'hjytjy', 'tuiyuiyui', 'Deluxe Room', 'Double', 1, '2019-03-27', '2019-03-21', -1320.00, -1399.20, -52.80, 'Breakfast', -26.40, -6),
+(32, 'Dr.', 'hjytjy', 'tuiyuiyui', 'Superior Room', 'Single', 1, '2019-03-08', '2019-03-13', 1600.00, 1616.00, 0.00, 'Room only', 16.00, 5),
+(33, 'Dr.', 'hjytjy', 'tuiyuiyui', 'Superior Room', 'Double', 1, '2019-03-06', '2019-03-21', 4800.00, 4896.00, 0.00, 'Room only', 96.00, 15),
+(34, 'Dr.', 'hjytjy', 'tuiyuiyui', 'Deluxe Room', 'Double', 1, '2019-03-05', '2019-03-13', 1760.00, 1865.60, 70.40, 'Breakfast', 35.20, 8),
 (35, 'Miss.', 'dsadsad', 'sdfsdf', 'Superior Room', 'Double', 1, '2019-03-13', '2019-03-29', 5120.00, 5222.40, 0.00, 'Room only', 102.40, 16),
 (36, 'Miss.', 'sdadad', 'sdffs', 'Deluxe Room', 'Double', 1, '2019-03-21', '2019-03-19', -440.00, -448.80, 0.00, 'Room only', -8.80, -2),
 (37, 'Miss.', 'sdadad', 'sdffs', 'Deluxe Room', 'Single', 1, '2019-03-12', '2019-03-19', 1540.00, 1555.40, 0.00, 'Room only', 15.40, 7),
@@ -356,7 +360,7 @@ CREATE TABLE `poolbook` (
 --
 
 INSERT INTO `poolbook` (`id`, `Title`, `FName`, `LName`, `Email`, `National`, `Country`, `Phone`, `Type`, `cinDate`, `cinTime`, `stat`, `payment`) VALUES
-(1, 'Dr.', 'rtgr', 'grt', 'smaaa@gmail.com', 'Sri Lankan', 'Bahamas', 0, '2', '2019-03-07', '12:12:12.000000', 'Conform', 0);
+(1, 'Dr.', 'rtgr', 'grt', 'smaaa@gmail.com', 'Sri Lankan', 'Bahamas', 0, '2', '2019-03-07', '12:12:12.000000', 'Conform', 500);
 
 -- --------------------------------------------------------
 
@@ -377,8 +381,8 @@ CREATE TABLE `room` (
 --
 
 INSERT INTO `room` (`id`, `type`, `bedding`, `place`, `cusid`) VALUES
-(1, 'Superior Room', 'Single', 'NotFree', 27),
-(2, 'Superior Room', 'Double', 'Free', NULL),
+(1, 'Superior Room', 'Single', 'NotFree', 32),
+(2, 'Superior Room', 'Double', 'NotFree', 33),
 (3, 'Superior Room', 'Triple', 'Free', 0),
 (8, 'Deluxe Room', 'Triple', 'Free', 0),
 (9, 'Deluxe Room', 'Quad', 'Free', NULL),
@@ -389,7 +393,7 @@ INSERT INTO `room` (`id`, `type`, `bedding`, `place`, `cusid`) VALUES
 (14, 'Single Room', 'Double', 'Free', NULL),
 (15, 'Guest House', 'Triple', 'Free', NULL),
 (16, 'Deluxe Room', 'Single', 'NotFree', 37),
-(17, 'Deluxe Room', 'Double', 'NotFree', 36),
+(17, 'Deluxe Room', 'Double', 'NotFree', 34),
 (18, 'Guest House', 'Quad', 'NotFree', 24),
 (19, 'Deluxe Room', 'Quad', 'Free', NULL);
 
@@ -423,20 +427,18 @@ CREATE TABLE `roombook` (
 --
 
 INSERT INTO `roombook` (`id`, `Title`, `FName`, `LName`, `Email`, `National`, `Country`, `Phone`, `TRoom`, `Bed`, `NRoom`, `Meal`, `cin`, `cout`, `stat`, `nodays`) VALUES
-(24, 'Dr.', 'Ravindu', 'Koshila', 'abc@gmail.com', 'Sri Lankan', 'Bangladesh', '077-4492476', 'Guest House', 'Quad', '1', 'Room only', '2018-12-15', '2018-12-16', 'Conform', 1),
-(26, 'Mrs.', 'Amanda', 'Silva', 'amanda@gmail.com', 'Sri Lankan', 'Sri Lanka', '0774521788', 'Deluxe Room', 'Single', '1', 'Half Board', '2019-01-31', '2019-02-01', 'Conform', 1),
+(24, '', 'Ravindu', 'Koshila', 'abc@gmail.com', 'Sri Lankan', 'Bahamas', '077-4492476', 'Guest House', 'Quad', '1', 'Room only', '2018-12-15', '2018-12-16', 'Conform', 1),
+(26, 'Dr.', 'Amanda', 'Silva', 'amanda@gmail.com', 'Sri Lankan', '', '0774521788', 'Deluxe Room', 'Single', '1', 'Half Board', '2019-01-31', '2019-02-01', 'Conform', 1),
 (27, 'Dr.', 'ravi', 'darchana', 'ravi@gail.com', 'Sri Lankan', 'Sri Lanka', '077-0461482', 'Superior Room', 'Single', '1', 'Room only', '2019-02-15', '2019-02-15', 'Conform', 0),
 (28, 'Miss.', 'fdgdfgdf', 'sdffs', 'sm@gmail.com', 'Sri Lankan', 'Bahamas', 'sdfs', 'Deluxe Room', 'Double', '1', 'Room only', '0000-00-00', '0000-00-00', 'Conform', NULL),
 (29, 'Dr.', 'New', 'New', 'smaaa@gmail.com', 'Non Sri Lankan ', 'Argentina', 'sdfs', 'Deluxe Room', 'Double', '1', 'Room only', '2019-03-06', '2019-03-05', 'Conform', -1),
-(31, 'Dr.', 'hjytjy', 'tuiyuiyui', 'admihhn@admin.com', 'Sri Lankan', 'Bangladesh', 'ytryry', 'Deluxe Room', 'Double', '1', 'Breakfast', '2019-03-27', '2019-03-21', 'Conform', -6),
-(32, 'Dr.', 'hjytjy', 'tuiyuiyui', 'admihhn@admin.com', 'Sri Lankan', 'Bangladesh', 'ytryry', 'Superior Room', 'Single', '1', 'Room only', '2019-03-08', '2019-03-13', 'Not Conform', 5),
-(33, 'Dr.', 'hjytjy', 'tuiyuiyui', 'admihhn@admin.com', 'Sri Lankan', 'Bangladesh', 'ytryry', 'Superior Room', 'Double', '1', 'Room only', '2019-03-06', '2019-03-21', 'Not Conform', 15),
-(34, 'Dr.', 'hjytjy', 'tuiyuiyui', 'admihhn@admin.com', 'Sri Lankan', 'Bangladesh', 'ytryry', 'Deluxe Room', 'Double', '1', 'Breakfast', '2019-03-05', '2019-03-13', 'Not Conform', 8),
+(31, 'Dr.', 'hjytjy', 'tuiyuiyui', 'admihhn@admin.com', 'Sri Lankan', 'Barbados', 'ytryry', 'Deluxe Room', 'Double', '1', 'Breakfast', '2019-03-27', '2019-03-21', 'Conform', -6),
+(32, 'Dr.', 'hjytjy', 'tuiyuiyui', 'admihhn@admin.com', 'Sri Lankan', 'Bangladesh', 'ytryry', 'Superior Room', 'Single', '1', 'Room only', '2019-03-08', '2019-03-13', 'Conform', 5),
+(33, 'Dr.', 'hjytjy', 'tuiyuiyui', 'admihhn@admin.com', 'Sri Lankan', 'Bangladesh', 'ytryry', 'Superior Room', 'Double', '1', 'Room only', '2019-03-06', '2019-03-21', 'Conform', 15),
+(34, 'Dr.', 'hjytjy', 'tuiyuiyui', 'admihhn@admin.com', 'Sri Lankan', 'Bangladesh', 'ytryry', 'Deluxe Room', 'Double', '1', 'Breakfast', '2019-03-05', '2019-03-13', 'Reject', 8),
 (35, 'Miss.', 'dsadsad', 'sdfsdf', 'marking1@gmail.com', 'Sri Lankan', 'Albania', 'dsad', 'Superior Room', 'Double', '1', 'Room only', '2019-03-13', '2019-03-29', 'Conform', 16),
 (36, 'Miss.', 'sdadad', 'sdffs', 'sm@gmail.com', 'Sri Lankan', 'Barbados', 'wfdsfs', 'Deluxe Room', 'Double', '1', 'Room only', '2019-03-21', '2019-03-19', 'Conform', -2),
-(37, 'Miss.', 'sdadad', 'sdffs', 'sm@gmail.com', 'Sri Lankan', 'Barbados', 'wfdsfs', 'Deluxe Room', 'Single', '1', 'Room only', '2019-03-12', '2019-03-19', 'Conform', 7),
-(38, 'Miss.', 'New', 'sdffs', 'cashier@cashier.com', 'Sri Lankan', 'Barbados', 'aefdsdf', 'Deluxe Room', 'Double', '1', 'Breakfast', '2019-03-07', '2019-03-28', 'Conform', 21),
-(39, 'Miss.', 'New', 'sdffs', 'cashier@cashier.com', 'Sri Lankan', 'Barbados', 'aefdsdf', 'Deluxe Room', 'Double', '1', 'Room only', '2019-03-20', '2019-03-28', 'Conform', 8);
+(37, 'Miss.', 'sdadad', 'sdffs', 'sm@gmail.com', 'Sri Lankan', 'Barbados', 'wfdsfs', 'Deluxe Room', 'Single', '1', 'Room only', '2019-03-12', '2019-03-19', 'Conform', 7);
 
 -- --------------------------------------------------------
 
@@ -611,7 +613,7 @@ ALTER TABLE `employee`
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `newsletterlog`
@@ -641,7 +643,7 @@ ALTER TABLE `room`
 -- AUTO_INCREMENT for table `roombook`
 --
 ALTER TABLE `roombook`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `tempuser`
