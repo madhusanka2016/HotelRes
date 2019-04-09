@@ -135,6 +135,7 @@
                             echo'
                         
                             <li>
+                             
                         <a href="customerdetails.php"><i class="fa fa-sign-out fa-fw"></i> Customer Details</a>
                     </li>
                             
