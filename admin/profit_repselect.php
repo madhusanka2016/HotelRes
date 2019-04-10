@@ -93,32 +93,21 @@ $Page_title = 'HORTAINRISE HOTEL - Salary';
                 <div class="col-md-5 col-sm-5">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            Employee Salary
+                            Select Duration
                         </div>
                         <div class="panel-body">
-						<form name="form" method="post" action="showsalary.php">
-                            <div class="form-group">
-                                            <label>Employee</label>
-                                            <select name="emp"  class="form-control" required>
-                                                
-                                                
-                        <?php
-						$sqle = "select * from employee where status = 1";
-						$ree = mysqli_query($con,$sqle);
-                                                
-                                                
-                                                while($row= mysqli_fetch_array($ree))
-										{
-                                                    echo "<option value = '".$row['id']."'>".$row['name']."</option>";
-                                                    
-                                                    
-                                                }
-                                                
-                                                
-						?>
-                                                
+						<form name="form" method="post" >
+                        <div class="form-group">
+                                            <label>Type</label>
+                                            <select name="type" class="form-control" required>
+                                                        <option value="room">Room Booking  </option>
+                                                        <option value="hall">Banquet Hall Booking </option>
+                                                        <option value="cafe">Cafetaria Booking </option>
+                                                        <option value="pool">Swimming Pool Booking </option>
+                                                                          
                                             </select>
-                              </div>
+                                            
+                               </div>
 							  
 								<div class="form-group">
                                             <label>Year</label>
@@ -157,7 +146,46 @@ $Page_title = 'HORTAINRISE HOTEL - Salary';
                                             </select>
                                             
                                </div>
-							 <input type="submit" name="print" value="Print" class="btn btn-primary"> 
+                               <div class="form-group">
+                                            <label>date</label>
+                                            <select name="date" class="form-control" >
+                                                        <option value="" selected> </option>
+                                                        <option value="01">01 </option>
+                                                        <option value="02">02 </option>
+                                                        <option value="03">03 </option>
+                                                        <option value="04">04 </option>
+                                                        <option value="05">05 </option>
+                                                        <option value="06">06 </option>
+                                                        <option value="07">07 </option>
+                                                        <option value="08">08 </option>
+                                                        <option value="09">09 </option>
+                                                        <option value="10">10 </option>
+                                                        <option value="11">11 </option>
+                                                        <option value="12">12 </option>
+                                                        <option value="13">13 </option>
+                                                        <option value="14">14 </option>
+                                                        <option value="15">15 </option>
+                                                        <option value="16">16 </option>
+                                                        <option value="17">17 </option>
+                                                        <option value="18">18 </option>
+                                                        <option value="19">19 </option>
+                                                        <option value="20">20 </option>
+                                                        <option value="21">21 </option>
+                                                        <option value="22">22 </option>
+                                                        <option value="23">23 </option>
+                                                        <option value="24">24 </option>
+                                                        <option value="25">25 </option>
+                                                        <option value="26">26 </option>
+                                                        <option value="27">27 </option>
+                                                        <option value="28">28 </option>
+                                                        <option value="29">29 </option>
+                                                        <option value="30">30 </option>
+                                                        <option value="31">31 </option>
+                                                                                 
+                                            </select>
+                                            
+                               </div>
+							 <input type="submit" name="print" value="Genarate" class="btn btn-primary"> 
 							</form>
 							<?php
 							 include('db.php');
@@ -197,78 +225,7 @@ $Page_title = 'HORTAINRISE HOTEL - Salary';
                 </div>
                 
                   
-            <div class="row">
-                <div class="col-md-6 col-sm-6">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            Recent Attendance
-                        </div>
-                        <div class="panel-body">
-								<!-- Advanced Tables -->
-                    <div class="panel panel-default">
-                        <?php
-						$sql = "select * from attendance where date = curdate() order by emp_id";
-						$re = mysqli_query($con,$sql)
-						?>
-                        <div class="panel-body">
-                            <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                    <thead>
-                                        <tr>
-                                            <th>Employee</th>
-                                            <th>Time</th>
-                                            <th>Status</th>
-                                            
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-									
-									<?php
-										while($row= mysqli_fetch_array($re))
-										{
-												$id = $row['id'];
-											if($id % 2 == 0) 
-											{
-												echo "<tr class=odd gradeX>
-													<td>".$row['employee']."</td>
-                                                                                                            <td>".$row['time']."</td>
-													<td>".$row['status']."</td>
-												</tr>";
-											}
-											else
-											{
-												echo"<tr class=even gradeC>
-													<td>".$row['employee']."</td>
-                                                                                                            <td>".$row['time']."</td>
-													<td>".$row['status']."</td>
-												</tr>";
-											
-											}
-										}
-									?>
-                                    </tbody>
-                                </table>
-                            </div>
-                            
-                        </div>
-                    </div>
-                    <!--End Advanced Tables -->
-                    
-                       
-                            
-							  
-							 
-							 
-							  
-							  
-							   
-                       </div>
-                        
-                    </div>
-                </div>
-                
-               
-            </div>
+           
                     
             
 				

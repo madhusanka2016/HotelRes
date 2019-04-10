@@ -99,7 +99,7 @@
                             echo'
                         
                             <li>
-                        <a href="profit_rep.php"><i class="fa fa-sign-out fa-fw"></i> Profit Report</a>
+                        <a href="profit_repselect.php"><i class="fa fa-sign-out fa-fw"></i> Profit Report</a>
                     </li>
                             
                             ';
