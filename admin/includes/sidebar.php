@@ -26,7 +26,7 @@
                             echo'
                         
                             <li>
-                        <a href="roombook.php"><i class="fa fa-bar-chart-o"></i> Room Booking</a>
+                        <a href="roombooking.php"><i class="fa fa-bar-chart-o"></i> Room Booking</a>
                     </li>
                             ';
                         
@@ -34,7 +34,7 @@
                             echo'
                         
                             <li>
-                        <a href="banquetBook.php"><i class="fa fa-bar-chart-o"></i> Banquet Hall Booking</a>
+                        <a href="banquetBooking.php"><i class="fa fa-bar-chart-o"></i> Banquet Hall Booking</a>
                     </li>
                             
                             ';
@@ -141,6 +141,13 @@
                             
                             ';
                         }
+                        echo'
+                        
+                        <li>
+                    <a href="followers.php"><i class="fa fa-qrcode"></i>Followers</a>
+                </li>
+                        
+                        ';
                         }
                     
                     

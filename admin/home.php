@@ -79,7 +79,7 @@ $Page_title = 'Administrator';
 						include ('db.php');
 						$sql = "select * from roombook";
 						$re = mysqli_query($con,$sql);
-						$c =0;
+						$rn =0;
 						while($row=mysqli_fetch_array($re) )
 						{
 								$new = $row['stat'];
@@ -87,7 +87,7 @@ $Page_title = 'Administrator';
 								$id = $row['id'];
 								if($new=="Not Conform")
 								{
-									$c = $c + 1;
+									$rn = $rn + 1;
 									
 								
 								}
@@ -102,79 +102,7 @@ $Page_title = 'Administrator';
 
 					<div class="row">
                 <div class="col-md-12">
-                    <div class="panel panel-default">
-                        
-                        <div class="panel-body">
-                            <div class="panel-group" id="accordion">
-							
-							<div class="panel panel-primary">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-											<button class="btn btn-default" type="button">
-												 New Room Bookings  <span class="badge"><?php echo $c ; ?></span>
-											</button>
-											</a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapseTwo" class="panel-collapse in" style="height: auto;">
-                                        <div class="panel-body">
-                                           <div class="panel panel-default">
-                        
-                        <div class="panel-body">
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Country</th>
-											<th>Room</th>
-											<th>Bedding</th>
-											<th>Meal</th>
-											<th>Check In</th>
-											<th>Check Out</th>
-											<th>Status</th>
-											<th>More</th>
-											
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        
-									<?php
-									$tsql = "select * from roombook";
-									$tre = mysqli_query($con,$tsql);
-									while($trow=mysqli_fetch_array($tre) )
-									{	
-										$co =$trow['stat']; 
-										if($co=="Not Conform")
-										{
-											echo"<tr>
-												<th>".$trow['id']."</th>
-												<th>".$trow['FName']." ".$trow['LName']."</th>
-												<th>".$trow['Email']."</th>
-												<th>".$trow['Country']."</th>
-												<th>".$trow['TRoom']."</th>
-												<th>".$trow['Bed']."</th>
-												<th>".$trow['Meal']."</th>
-												<th>".$trow['cin']."</th>
-												<th>".$trow['cout']."</th>
-												<th>".$trow['stat']."</th>
-												
-												<th><a href='roombook.php?rid=".$trow['id']." ' class='btn btn-primary'>Action</a></th>
-												</tr>";
-										}	
-									
-									}
-									?>
-                                        
-                                    </tbody>
-                                </table>
-								
-                            </div>
-                        </div>
-                    </div>
+                    
                       <!-- End  Basic Table  --> 
                                         </div>
                                     </div>
@@ -184,13 +112,13 @@ $Page_title = 'Administrator';
 								
 								$rsql = "SELECT * FROM `roombook`";
 								$rre = mysqli_query($con,$rsql);
-								$r =0;
+								$rc =0;
 								while($row=mysqli_fetch_array($rre) )
 								{		
 										$br = $row['stat'];
 										if($br=="Conform")
 										{
-											$r = $r + 1;
+											$rc = $rc + 1;
 											
 											
 											
@@ -200,484 +128,502 @@ $Page_title = 'Administrator';
 								}
 						
 								?>
-                                
-                <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            
-                        </div>
-                        <div class="panel-body">
-                            <div class="panel-group" id="accordion1">
-							
-							<div class="panel panel-primary">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion1" href="#collapseTwo1">
-											<button class="btn btn-default" type="button">
-												 New Banquet Hall Bookings  <span class="badge"><?php echo $c ; ?></span>
-											</button>
-											</a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapseTwo1" class="panel-collapse in" style="height: auto;">
-                                        <div class="panel-body">
-                                           <div class="panel panel-default">
-                        
-                        <div class="panel-body">
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Country</th>
-											<th>Hall</th>
-											<th>Flower Arrange</th>
-											<th>Light</th>
-											<th>Check In Date</th>
-											<th>Check In Time</th>
-											<th>Status</th>
-											<th>More</th>
-											
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        
 									<?php
-									$tsql = "select * from banquetbook";
-									$tre = mysqli_query($con,$tsql);
-									while($trow=mysqli_fetch_array($tre) )
-									{	
-										$co =$trow['stat']; 
-										if($co=="Not Conform")
-										{
-											echo"<tr>
-												<th>".$trow['id']."</th>
-												<th>".$trow['FName']." ".$trow['LName']."</th>
-												<th>".$trow['Email']."</th>
-												<th>".$trow['Country']."</th>
-												<th>".$trow['THall']."</th>
-												<th>".$trow['Farrange']."</th>
-												<th>".$trow['Light']."</th>
-												<th>".$trow['cinDate']."</th>
-												<th>".$trow['cinTime']."</th>
-												<th>".$trow['stat']."</th>
-												
-												<th><a href='banquetbook.php?rid=".$trow['id']." ' class='btn btn-primary'>Action</a></th>
-												</tr>";
-										}	
-									
-									}
-									?>
-                                        
-                                    </tbody>
-                                </table>
-								
-                            </div>
-                        </div>
-                    </div>
-                      <!-- End  Basic Table  --> 
-                                        </div>
-                                    </div>
-                                </div>
-								<?php
-								
-								$rsql = "SELECT * FROM `banquetbook`";
-								$rre = mysqli_query($con,$rsql);
-								$r =0;
-								while($row=mysqli_fetch_array($rre) )
-								{		
-										$br = $row['stat'];
-										if($br=="Conform")
-										{
-											$r = $r + 1;
-											
-											
-											
-										}
-										
-								
-								}
-						
-								?>
-                                
-                                <div class="panel panel-info">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="collapsed">
-											<button class="btn btn-primary" type="button">
-												 Booked Rooms  <span class="badge"><?php echo $r ; ?></span>
-											</button>
-											
-											</a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapseOne" class="panel-collapse collapse" style="height: 0px;">
-                                        <div class="panel-body">
-										<?php
-										$msql = "SELECT * FROM `roombook`";
-										$mre = mysqli_query($con,$msql);
-										
-										while($mrow=mysqli_fetch_array($mre) )
-										{		
-											$br = $mrow['stat'];
-											if($br=="Conform")
-											{
-												$fid = $mrow['id'];
-												 
-											echo"<div class='col-md-3 col-sm-12 col-xs-12'>
-													<div class='panel panel-primary text-center no-boder bg-color-blue'>
-														<div class='panel-body'>
-															<i class='fa fa-users fa-5x'></i>
-															<h3>".$mrow['FName']."</h3>
-														</div>
-														<div class='panel-footer back-footer-blue'>
-														<a href=show.php?sid=".$fid ."><button  class='btn btn-primary btn' data-toggle='modal' data-target='#myModal'>
-													Show
-													</button></a>
-															".$mrow['TRoom']."
-														</div>
-													</div>	
-											</div>";
-															
-												
-					
-				
-												
-											}
-											
-									
-										}
-										?>
-                                           
-										</div>
-										
-                                    </div>
-									
-                                </div>
-                                
-                                <div class="panel panel-info">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="collapsed">
-											<button class="btn btn-primary" type="button">
-												 Booked Halls  <span class="badge"><?php echo $r ; ?></span>
-											</button>
-											
-											</a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapseOne" class="panel-collapse collapse" style="height: 0px;">
-                                        <div class="panel-body">
-										<?php
-										$msql = "SELECT * FROM `banquetbook`";
-										$mre = mysqli_query($con,$msql);
-										
-										while($mrow=mysqli_fetch_array($mre) )
-										{		
-											$br = $mrow['stat'];
-											if($br=="Conform")
-											{
-												$fid = $mrow['id'];
-												 
-											echo"<div class='col-md-3 col-sm-12 col-xs-12'>
-													<div class='panel panel-primary text-center no-boder bg-color-blue'>
-														<div class='panel-body'>
-															<i class='fa fa-users fa-5x'></i>
-															<h3>".$mrow['FName']."</h3>
-														</div>
-														<div class='panel-footer back-footer-blue'>
-														<a href=show.php?sid=".$fid ."><button  class='btn btn-primary btn' data-toggle='modal' data-target='#myModal'>
-													Show
-													</button></a>
-															".$mrow['THall']."
-														</div>
-													</div>	
-											</div>";
-															
-												
-					
-				
-												
-											}
-											
-									
-										}
-										?>
-                                           
-										</div>
-										
-                                    </div>
-									
-                                </div>
-								<?php
 								
 								$rsql = "SELECT * FROM `roombook`";
 								$rre = mysqli_query($con,$rsql);
-								$r =0;
+								$rr =0;
 								while($row=mysqli_fetch_array($rre) )
 								{		
 										$br = $row['stat'];
 										if($br=="Reject")
 										{
-											$r = $r + 1;
+											$rr = $rr + 1;
 											
 											
 											
 										}
 										
-								
-								}
-								?>
-                                
-                                <div class="row">
-                <div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            
-                        </div>
-                        <div class="panel-body">
-                            <div class="panel-group" id="accordion2">
-							
-							<div class="panel panel-primary">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo2">
-											<button class="btn btn-default" type="button">
-												 Rejected Room Bookings  <span class="badge"><?php echo $r ; ?></span>
-											</button>
-											</a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapseTwo2" class="panel-collapse in" style="height: auto;">
-                                        <div class="panel-body">
-                                           <div class="panel panel-default">
-                        
-										   <div class="panel-body">
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Country</th>
-											<th>Room</th>
-											
-											<th>Check In</th>
-											<th>Check Out</th>
-											<th>Status</th>
-											<th>More</th>
-											
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        
-									<?php
-									$tsql = "select * from roombook";
-									$tre = mysqli_query($con,$tsql);
-									while($trow=mysqli_fetch_array($tre) )
-									{	
-										$co =$trow['stat']; 
-										if($co=="Reject")
-										{
-											echo"<tr>
-												<th>".$trow['id']."</th>
-												<th>".$trow['FName']." ".$trow['LName']."</th>
-												<th>".$trow['Email']."</th>
-												<th>".$trow['Country']."</th>
-											
-												<th>".$trow['Meal']."</th>
-												<th>".$trow['cin']."</th>
-												<th>".$trow['cout']."</th>
-												<th>".$trow['stat']."</th>
-												
-												<th><a href='roombook.php?rid=".$trow['id']." ' class='btn btn-primary'>Action</a></th>
-												</tr>";
-										}	
-									
-									}
-									?>
-                                        
-                                    </tbody>
-                                </table>
-								
-                            </div>
-                        </div>
-                    </div>
-                      <!-- End  Basic Table  --> 
-                                        </div>
-                                    </div>
-                                </div>
-								<?php
-								
-								$rsql = "SELECT * FROM `banquetbook`";
-								$rre = mysqli_query($con,$rsql);
-								$r =0;
-								while($row=mysqli_fetch_array($rre) )
-								{		
-										$br = $row['stat'];
-										if($br=="Reject")
-										{
-											$r = $r + 1;
-											
-											
-											
-										}
-										
-								
-								}
-								?>
-                                
-                                <div class="row">
-                		<div class="col-md-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            
-                        </div>
-                        <div class="panel-body">
-                            <div class="panel-group" id="accordion3">
-							
-							<div class="panel panel-primary">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion3" href="#collapseTwo3">
-											<button class="btn btn-default" type="button">
-												 Rejected Room Bookings  <span class="badge"><?php echo $r ; ?></span>
-											</button>
-											</a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapseTwo3" class="panel-collapse in" style="height: auto;">
-                                        <div class="panel-body">
-                                           <div class="panel panel-default">
-                        
-										   <div class="panel-body">
-                            <div class="table-responsive">
-							<table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Country</th>
-											<th>Hall</th>
-											<th>Flower Arrange</th>
-											<th>Light</th>
-											<th>Check In Date</th>
-											<th>Check In Time</th>
-											<th>Status</th>
-											<th>More</th>
-											
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        
-									<?php
-									$tsql = "select * from banquetbook";
-									$tre = mysqli_query($con,$tsql);
-									while($trow=mysqli_fetch_array($tre) )
-									{	
-										$co =$trow['stat']; 
-										if($co=="Reject")
-										{
-											echo"<tr>
-												<th>".$trow['id']."</th>
-												<th>".$trow['FName']." ".$trow['LName']."</th>
-												<th>".$trow['Email']."</th>
-												<th>".$trow['Country']."</th>
-												<th>".$trow['THall']."</th>
-												<th>".$trow['Farrange']."</th>
-												<th>".$trow['Light']."</th>
-												<th>".$trow['cinDate']."</th>
-												<th>".$trow['cinTime']."</th>
-												<th>".$trow['stat']."</th>
-												
-												<th><a href='banquetbook.php?rid=".$trow['id']." ' class='btn btn-primary'>Action</a></th>
-												</tr>";
-										}	
-									
-									}
-									?>
-                                        
-                                    </tbody>
-                                </table>
-								
-                            </div>
-                        </div>
-                    </div>
-					</div>
-					</div>
-                      <!-- End  Basic Table  --> 
-                                        </div>
-                                    </div>
-                                </div>
-                                <?php
-								
-								$fsql = "SELECT * FROM `contact`";
-								$fre = mysqli_query($con,$fsql);
-								$f =0;
-								while($row=mysqli_fetch_array($fre) )
-								{
-										$f = $f + 1;
 								
 								}
 						
 								?>
-                                <div class="panel panel-danger">
-                                    <div class="panel-heading">
-                                        <h4 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="collapsed">
-											<button class="btn btn-primary" type="button">
-												 Followers  <span class="badge"><?php echo $f ; ?></span>
-											</button>
-											</a>
-                                        </h4>
-                                    </div>
-                                    <div id="collapseThree" class="panel-collapse collapse">
-                                        <div class="panel-body">
-                                            <div class="panel-body">
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Full Name</th>
-                                            <th>Email</th>
-											<th>Follow Start</th>
-                                            <th>Permission status</th>
-                                            
+                                
+                
+								<?php
+								
+								$rsql = "SELECT * FROM `banquetbook`";
+								$rre = mysqli_query($con,$rsql);
+								$hn =0;
+								while($row=mysqli_fetch_array($rre) )
+								{		
+										$br = $row['stat'];
+										if($br=="Not Conform")
+										{
+											$hn = $hn + 1;
 											
-                                        </tr>
-                                    </thead>
-                                    <tbody>
+											
+											
+										}
+										
+								
+								}
+						
+								?>
+                                
+                                
+								<?php
+								
+								$rsql = "SELECT * FROM `banquetbook`";
+								$rre = mysqli_query($con,$rsql);
+								$hc =0;
+								while($row=mysqli_fetch_array($rre) )
+								{		
+										$br = $row['stat'];
+										if($br=="Conform")
+										{
+											$hc = $hc + 1;
+											
+											
+											
+										}
+										
+								
+								}
+								?>
+                                
+                                
+								<?php
+								
+								$rsql = "SELECT * FROM `banquetbook`";
+								$rre = mysqli_query($con,$rsql);
+								$hr =0;
+								while($row=mysqli_fetch_array($rre) )
+								{		
+										$br = $row['stat'];
+										if($br=="Reject")
+										{
+											$hr = $hr + 1;
+											
+											
+											
+										}
+										
+								
+								}
+								?>
+                                
+                                
+                                
+                                
                                         
-									<?php
-									$csql = "select * from contact";
-									$cre = mysqli_query($con,$csql);
-									while($crow=mysqli_fetch_array($cre) )
-									{	
-										
-											echo"<tr>
-												<th>".$crow['id']."</th>
-												<th>".$crow['fullname']."</th>
-												<th>".$crow['email']." </th>
-												<th>".$crow['cdate']." </th>
-												<th>".$crow['approval']."</th>
-												</tr>";
-										
 									
-									}
-									?>
                                         
-                                    </tbody>
-                                </table>
-								<a href="messages.php" class="btn btn-primary">More Action</a>
-                            </div>
+										<div class="col-md-4 col-sm-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Room Bookings 
+                        </div>
+                        <div class="panel-body">
+						<table width="200px">
+							
+							<tr>
+								<td width="200px"><b>New 	 </b></td>
+								<td><button type="button" class="btn btn-primary btn-circle"><?php  
+									
+											echo $rn;
+								
+								
+								
+								?> </button></td> 
+							</tr>
+							<tr>
+								<td><b>Confirmed </b>	 </td>
+								<td><button type="button" class="btn btn-primary btn-circle"><?php  
+									
+											echo $rc;
+								
+								
+								
+								?> </button></td>
+							</tr>
+							<tr>
+								<td><b>Rejected	 </b></td>
+								<td><button type="button" class="btn btn-primary btn-circle"><?php  
+									
+											echo $rr;
+								
+								
+								
+								?> </button></td>
+							</tr>
+							
+							
+						</table>
+						
+						
+						
+                        
+						
+						</div>
+						<div class="panel-heading">
+                            Banquet Hall  Bookings 
+                        </div>
+                        <div class="panel-body">
+						<table width="200px">
+							
+							<tr >
+								<td width="200px"><b>New 	 </b></td>
+								<td><button type="button" class="btn btn-primary btn-circle"><?php  
+									
+											echo $hn;
+								
+								
+								
+								?> </button></td>
+							</tr>
+							<tr>
+								<td><b>Confirmed </b>	 </td>
+								<td><button type="button" class="btn btn-primary btn-circle"><?php  
+									
+											echo $hc;
+								
+								
+								
+								?> </button></td>
+							</tr>
+							<tr>
+								<td><b>Rejected 	 </b></td>
+								<td><button type="button" class="btn btn-primary btn-circle"><?php  
+									
+											echo $hr;
+								
+								
+								
+								?> </button></td>
+							</tr>
+							
+							
+						</table>
+						</div>
+                        <div class="panel-footer">
+                            
                         </div>
                     </div>
+					</div>
+
+					<?php
+								
+								$rsql = "SELECT * FROM `cafebook`";
+								$rre = mysqli_query($con,$rsql);
+								$cn =0;
+								while($row=mysqli_fetch_array($rre) )
+								{		
+										$br = $row['stat'];
+										if($br=="Not Conform")
+										{
+											$cn = $cn + 1;
+											
+											
+											
+										}
+										
+								
+								}
+								?>
+								<?php
+								
+								$rsql = "SELECT * FROM `cafebook`";
+								$rre = mysqli_query($con,$rsql);
+								$cc =0;
+								while($row=mysqli_fetch_array($rre) )
+								{		
+										$br = $row['stat'];
+										if($br=="Conform")
+										{
+											$cc = $cc + 1;
+											
+											
+											
+										}
+										
+								
+								}
+								?>
+
+<?php
+								
+								$rsql = "SELECT * FROM `cafebook`";
+								$rre = mysqli_query($con,$rsql);
+								$cr =0;
+								while($row=mysqli_fetch_array($rre) )
+								{		
+										$br = $row['stat'];
+										if($br=="Reject")
+										{
+											$cr = $cr + 1;
+											
+											
+											
+										}
+										
+								
+								}
+								?>
+								<?php
+								
+								$rsql = "SELECT * FROM `poolbook`";
+								$rre = mysqli_query($con,$rsql);
+								$pn =0;
+								while($row=mysqli_fetch_array($rre) )
+								{		
+										$br = $row['stat'];
+										if($br=="Not Conform")
+										{
+											$pn = $pn + 1;
+											
+											
+											
+										}
+										
+								
+								}
+								?>
+								<?php
+								
+								$rsql = "SELECT * FROM `poolbook`";
+								$rre = mysqli_query($con,$rsql);
+								$pc =0;
+								while($row=mysqli_fetch_array($rre) )
+								{		
+										$br = $row['stat'];
+										if($br=="Conform")
+										{
+											$pc = $pc + 1;
+											
+											
+											
+										}
+										
+								
+								}
+								?>
+								<?php
+								
+								$rsql = "SELECT * FROM `poolbook`";
+								$rre = mysqli_query($con,$rsql);
+								$pr =0;
+								while($row=mysqli_fetch_array($rre) )
+								{		
+										$br = $row['stat'];
+										if($br=="Reject")
+										{
+											$pr = $pr + 1;
+											
+											
+											
+										}
+										
+								
+								}
+								?>
+					<div class="col-md-4 col-sm-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                           Cafetaria Bookings 
+                        </div>
+                        <div class="panel-body">
+						<table width="200px">
+							
+							<tr>
+								<td width="200px"><b>New 	 </b></td>
+								<td><button type="button" class="btn btn-primary btn-circle"><?php  
+									
+											echo $cn;
+								
+								
+								
+								?> </button></td> 
+							</tr>
+							<tr>
+								<td><b>Confirmed </b>	 </td>
+								<td><button type="button" class="btn btn-primary btn-circle"><?php  
+									
+											echo $cc;
+								
+								
+								
+								?> </button></td>
+							</tr>
+							<tr>
+								<td><b>Rejected	 </b></td>
+								<td><button type="button" class="btn btn-primary btn-circle"><?php  
+									
+											echo $cr;
+								
+								
+								
+								?> </button></td>
+							</tr>
+							
+							
+						</table>
+						
+						
+						
+                        
+						
+						</div>
+						<div class="panel-heading">
+                            Swimming Pool  Bookings 
+                        </div>
+                        <div class="panel-body">
+						<table width="200px">
+							
+							<tr >
+								<td width="200px"><b>New 	 </b></td>
+								<td><button type="button" class="btn btn-primary btn-circle"><?php  
+									
+											echo $pn;
+								
+								
+								
+								?> </button></td>
+							</tr>
+							<tr>
+								<td><b>Confirmed </b>	 </td>
+								<td><button type="button" class="btn btn-primary btn-circle"><?php  
+									
+											echo $pc;
+								
+								
+								
+								?> </button></td>
+							</tr>
+							<tr>
+								<td><b>Rejected 	 </b></td>
+								<td><button type="button" class="btn btn-primary btn-circle"><?php  
+									
+											echo $pr;
+								
+								
+								
+								?> </button></td>
+							</tr>
+							
+							
+						</table>
+						</div>
+                        <div class="panel-footer">
+                            
+                        </div>
+                    </div>
+					</div>
+					<?php
+								
+								$rsql = "SELECT * FROM `room`";
+								$rre = mysqli_query($con,$rsql);
+								$sinr =0;
+								$supr =0;
+								$dr =0;
+								$gr =0;
+								while($row=mysqli_fetch_array($rre) )
+								{		
+										$stat = $row['place'];
+										$room = $row['type'];
+
+										if($stat=="Free")
+										{
+
+											if($room=="Superior Room")
+											{
+											$sinr = $sinr + 1;	
+											}
+											elseif($room=="Single Room")
+											{
+											$supr = $supr + 1;	
+											}
+											elseif($room=="Deluxe Room")
+											{
+											$dr = $dr + 1;	
+											}
+											elseif($room=="Guest House")
+											{
+											$gr = $gr + 1;	
+											}
+											
+											
+											
+										}
+										
+								
+								}
+								?>
+					<div class="col-md-4 col-sm-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                           Available Room Details
+                        </div>
+                        <div class="panel-body">
+						<table width="200px">
+							
+							<tr>
+								<td><b>Superior Room	 </b></td>
+								<td><button type="button" class="btn btn-primary btn-circle"><?php  
+									
+											echo $supr;
+								
+								
+								
+								?> </button></td>
+							</tr>
+							<tr>
+								<td><b>Guest House</b>	 </td>
+								<td><button type="button" class="btn btn-primary btn-circle"><?php  
+									
+											echo $gr;
+								
+								
+								
+								?> </button></td>
+							</tr>
+							<tr>
+								<td><b>Single Room	 </b></td>
+								<td><button type="button" class="btn btn-primary btn-circle"><?php  
+									
+											echo $sinr;
+								
+								
+								
+								?> </button></td>
+							</tr>
+							<tr>
+								<td><b>Deluxe Room</b>	 </td>
+								<td><button type="button" class="btn btn-primary btn-circle"><?php  
+									
+											echo $dr;
+								
+								
+								
+								?> </button></td>
+							</tr>
+							
+						</table>
+						
+						
+						
+                        
+						
+						</div>
+                        <div class="panel-footer">
+                            
+                        </div>
+                    </div>
+					</div>
+
+                <!-- /. ROW  -->
+				
+            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -689,11 +635,7 @@ $Page_title = 'Administrator';
             
 			
 										
-                    
-
-                <!-- /. ROW  -->
-				
-            </div>
+			
             <!-- /. PAGE INNER  -->
         </div>
         <!-- /. PAGE WRAPPER  -->

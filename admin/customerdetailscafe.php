@@ -16,7 +16,7 @@ if(isset($_POST['update'])){
     $country = $_POST['country'];
     $phone = $_POST['phone'];
 				
-    $newsql ="update `roombook` set `Title`='$title',`FName`='$fname',`LName`='$lname',`Email`='$email',`National`='$nation',`Country`='$country',`Phone`='$phone' WHERE id ='$id' ";
+    $newsql ="update `cafebook` set `Title`='$title',`FName`='$fname',`LName`='$lname',`Email`='$email',`National`='$nation',`Country`='$country',`Phone`='$phone' WHERE id ='$id' ";
     if(mysqli_query($con,$newsql))
 			 	{
                     echo' <script language="javascript" type="text/javascript"> alert("Customer Updated") </script>';
@@ -163,7 +163,7 @@ ob_start();
 
                     <?php
                     
-                    $sql = "SELECT * FROM roombook";
+                    $sql = "SELECT * FROM cafebook";
                     $re = mysqli_query($con, $sql);
                     while ($row = mysqli_fetch_array($re)) {
 
