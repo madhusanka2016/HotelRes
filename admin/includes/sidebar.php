@@ -86,7 +86,7 @@
                             ';
                         
                         
-                        if ($userRow['role'] == "manager") {
+                        if ($userRow['role'] == "admin" || $userRow['role'] == "manager") {
                             echo'
                         
                             <li>

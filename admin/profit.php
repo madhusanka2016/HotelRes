@@ -11,7 +11,7 @@ $sql2 = "SELECT * FROM login WHERE id = '$user_id'";
 $result2 = mysqli_query($con, $sql2);
 $userRow = mysqli_fetch_array($result2, MYSQLI_ASSOC);
 
-if ($userRow['role'] == "reception"||$userRow['role'] == "manager") {
+if ($userRow['role'] == "reception") {
     header("location:home.php");
 }
 $Page_title = 'Administrator';
