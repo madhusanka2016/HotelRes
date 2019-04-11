@@ -6,15 +6,18 @@ if (!isset($_SESSION["user"])) {
 
 include('db.php');
 
-$user_id = $_SESSION['user_id'];
-$sql2 = "SELECT * FROM login WHERE id = '$user_id'";
-$result2 = mysqli_query($con, $sql2);
-$userRow = mysqli_fetch_array($result2, MYSQLI_ASSOC);
 
-if ($userRow['role'] == "reception") {
-    header("location:home.php");
-}
 $Page_title = 'Administrator';
+if(!isset($_GET["id"]))
+		{
+				
+			 header("location:home.php");
+		}
+		else {
+				
+				;
+                $range = $_GET['id'];
+        }
 
 ?> 
 
@@ -23,7 +26,7 @@ $Page_title = 'Administrator';
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title><?php echo $Page_title ?> HORTAINRISE HOTEL</title>
+        <title><?php echo $Page_title ?>HORTAINRISE HOTEL</title>
         <!-- Bootstrap Styles-->
         <link href="assets/css/bootstrap.css" rel="stylesheet" />
         <!-- FontAwesome Styles-->
@@ -85,7 +88,7 @@ $Page_title = 'Administrator';
                     <div class="row">
                         <div class="col-md-12">
                             <h1 class="page-header">
-                                Profit Details<small> Room Booking </small>
+                                Profit Report<small> On <?php echo $range?> </small>
                             </h1>
                         </div>
                     </div> 
@@ -94,33 +97,12 @@ $Page_title = 'Administrator';
 
                     <div class="row">
 
-<?php
-//index.php
-//$connect = mysqli_connect("localhost", "root", "", "hotel");
-include('db.php');
-
-
-$query = "SELECT * FROM payment";
-$result = mysqli_query($con, $query);
-$chart_data = '';
-$tot = '';
-while ($row = mysqli_fetch_array($result)) {
-    $chart_data .= "{ date:'" . $row["cout"] . "', profit:" . $row["fintot"] * 10 / 100 . "}, ";
-    $tot = $tot + $row["fintot"] * 10 / 100;
-}
-$chart_data = substr($chart_data, 0, -2);
-?>
-
-                        <br>
-                            <br>
-                                <br>
-                                    <br><div id="chart"></div>
                                         <div class="col-md-12">
                                             <!-- Advanced Tables -->
                                             <div class="panel panel-default">
                                                 <div class="panel-body">
-                                                    <div class="table-responsive">
-                                                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                                    <div id="print" class="table-responsive">
+                                                        <table class="table table-striped table-bordered table-hover">
                                                             <thead>
                                                                 <tr>
                                                                     <th>ID</th>
@@ -139,7 +121,7 @@ $chart_data = substr($chart_data, 0, -2);
                                                             <tbody>
 
 <?php
-$sql = "select * from payment";
+$sql = "select * from payment where cin like '$range%'  ";
 $re = mysqli_query($con, $sql);
 while ($row = mysqli_fetch_array($re)) {
 
@@ -177,11 +159,23 @@ while ($row = mysqli_fetch_array($re)) {
     }
 }
 ?>
+                <header>
+                    <h1><center>Profit Report - Room Booking</center></h1>
+			
+                    <p align="right"><span><img alt="" src="assets/img/hortain.png">
+                        </span></p>
+                    <address >				
+				<p>HORTAIN RISE HOTEL,<br>Horton Plain Road,<br>Nuwaraeliya,<br>Sri Lanka.</p>
+				<p>(+94) 65 222 44 55</p>
+			</address>
+		</header>
+		<article>
+			
 
                                                             </tbody>
                                                         </table>
                                                     </div>
-
+                                                    <a href="profit_reproomprint.php?id=<?php echo $range?>";><button class="btn academy-btn mt-30" >Print</button> </a>
                                                 </div>
                                             </div>
                                             <!--End Advanced Tables -->
@@ -231,3 +225,19 @@ while ($row = mysqli_fetch_array($re)) {
                                                 stacked: true
                                             });
                                         </script>
+
+
+
+<script>
+
+function printel(){
+    var w = window.open('', 'PRINT', 'height=3508, width = 2480');
+    w.document.write(document.getElementById("print").innerHTML);
+    w.document.close();
+    w.focus();
+    w.print();
+    w.close();
+    return true;
+}
+
+</script>

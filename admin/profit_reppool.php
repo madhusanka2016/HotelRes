@@ -6,15 +6,18 @@ if (!isset($_SESSION["user"])) {
 
 include('db.php');
 
-$user_id = $_SESSION['user_id'];
-$sql2 = "SELECT * FROM login WHERE id = '$user_id'";
-$result2 = mysqli_query($con, $sql2);
-$userRow = mysqli_fetch_array($result2, MYSQLI_ASSOC);
 
-if ($userRow['role'] == "reception"||$userRow['role'] == "manager") {
-    header("location:home.php");
-}
 $Page_title = 'Administrator';
+if(!isset($_GET["id"]))
+		{
+				
+			 header("location:home.php");
+		}
+		else {
+				
+				;
+                $range = $_GET['id'];
+        }
 
 ?> 
 
@@ -85,7 +88,7 @@ $Page_title = 'Administrator';
                     <div class="row">
                         <div class="col-md-12">
                             <h1 class="page-header">
-                                Profit Report<small> </small>
+                                Profit Report<small> On <?php echo $range?> </small>
                             </h1>
                         </div>
                     </div> 
@@ -104,12 +107,8 @@ $Page_title = 'Administrator';
                                                                 <tr>
                                                                     <th>ID</th>
                                                                     <th>Name</th>
-                                                                    <th>Check in</th>
-                                                                    <th>Check out</th>
-                                                                    <th>Room Rent</th>
-                                                                    <th>Bed Rent</th>
-                                                                    <th>Meals </th>
-                                                                    <th>Gr.Total</th>
+                                                                    <th>Date</th>
+                                                                   
                                                                     <th>Profit</th>
 
 
@@ -118,7 +117,7 @@ $Page_title = 'Administrator';
                                                             <tbody>
 
 <?php
-$sql = "select * from payment";
+$sql = "select * from poolbook where cinDate like '$range%'  ";
 $re = mysqli_query($con, $sql);
 while ($row = mysqli_fetch_array($re)) {
 
@@ -127,37 +126,31 @@ while ($row = mysqli_fetch_array($re)) {
     if ($id % 2 == 1) {
         echo"<tr class='gradeC'>
 													<td>" . $row['id'] . " </td>
-													<td>" . $row['title'] . " " . $row['fname'] . " " . $row['lname'] . "</td>
-													<td>" . $row['cin'] . "</td>
-													<td>" . $row['cout'] . "</td>
+													<td>" . $row['Title'] . " " . $row['FName'] . " " . $row['LName'] . "</td>
+													<td>" . $row['cinDate'] . "</td>
 													
 													
-													<td>$" . $row['ttot'] . "</td>
-													<td>$" . $row['mepr'] . "</td>
-													<td>$" . $row['btot'] . "</td>
-													<td>$" . $row['fintot'] . "</td>
-													<td>$" . $row['fintot'] * 10 / 100 . "</td>
+													
+													
+													<td>$" . $row['payment'] . "</td>
+													
 													</tr>";
     } else {
         echo"<tr class='gradeU'>
-													<td>" . $row['id'] . " </td>
-													<td>" . $row['title'] . " " . $row['fname'] . " " . $row['lname'] . "</td>
-													
-													<td>" . $row['cin'] . "</td>
-													<td>" . $row['cout'] . "</td>
+        <td>" . $row['id'] . " </td>
+													<td>" . $row['Title'] . " " . $row['FName'] . " " . $row['LName'] . "</td>
+													<td>" . $row['cinDate'] . "</td>
 													
 													
-													<td>$" . $row['ttot'] . "</td>
-													<td>$" . $row['mepr'] . "</td>
-													<td>$" . $row['btot'] . "</td>
-													<td>$" . $row['fintot'] . "</td>
-													<td>$" . $row['fintot'] * 10 / 100 . "</td>
+													
+													
+													<td>$" . $row['payment'] . "</td>
 													</tr>";
     }
 }
 ?>
                 <header>
-                    <h1><center>Profit Report</center></h1>
+                    <h1><center>Profit Report - Swimming Pool Booking</center></h1>
 			
                     <p align="right"><span><img alt="" src="assets/img/hortain.png">
                         </span></p>
@@ -172,7 +165,7 @@ while ($row = mysqli_fetch_array($re)) {
                                                             </tbody>
                                                         </table>
                                                     </div>
-                                                    <input type="button" onclick="printel()" name="add" value="Print" class="btn btn-primary"> 
+                                                    <a href="profit_reppoolprint.php?id=<?php echo $range?>";><button class="btn academy-btn mt-30" >Print</button> </a>
                                                 </div>
                                             </div>
                                             <!--End Advanced Tables -->

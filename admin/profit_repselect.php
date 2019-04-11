@@ -96,7 +96,7 @@ $Page_title = 'HORTAINRISE HOTEL - Salary';
                             Select Duration
                         </div>
                         <div class="panel-body">
-						<form name="form" method="post" >
+						<form name="form" method="post" action="profit_repdir.php">
                         <div class="form-group">
                                             <label>Type</label>
                                             <select name="type" class="form-control" required>
@@ -112,6 +112,7 @@ $Page_title = 'HORTAINRISE HOTEL - Salary';
 								<div class="form-group">
                                             <label>Year</label>
                                             <select name="year" class="form-control" required>
+                                            <option value="2018">2018 </option>
                                                         <option value="2019">2019 </option>
                                                         <option value="2020">2020 </option>
                                                         <option value="2021">2021 </option>
@@ -185,40 +186,9 @@ $Page_title = 'HORTAINRISE HOTEL - Salary';
                                             </select>
                                             
                                </div>
-							 <input type="submit" name="print" value="Genarate" class="btn btn-primary"> 
+							 <input type="submit" name="generate" value="Genarate" class="btn btn-primary"> 
 							</form>
-							<?php
-							 include('db.php');
-							 if(isset($_POST['add']))
-							 {
-										$empid = $_POST['emp'];
-									
-										$status = $_POST['status'];
-									
-										
-										$check="SELECT * FROM attendance WHERE date = curdate() and emp_id = '$empid' and status =   '$status'";
-										$rs = mysqli_query($con,$check);
-										$data = mysqli_fetch_array($rs, MYSQLI_NUM);
-										if($data[0] > 1) {
-											echo "<script type='text/javascript'> alert('Employee Already marked')</script>";
-											
-										}
-
-										else
-										{
-							 
-										
-										$sql ="INSERT INTO `attendance`( date, employee, emp_id, status, time) VALUES (curdate(),(select name from employee where id = '$empid'),'$empid', '$status', now())" ;
-										if(mysqli_query($con,$sql))
-										{
-										 echo '<script>alert("Marked") </script>' ;
-										}else {
-											echo '<script>alert("Sorry ! Check The System") </script>' ;
-										}
-							 }
-							}
-
-							?>
+							
                         </div>
                         
                     </div>
