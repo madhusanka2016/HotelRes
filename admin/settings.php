@@ -55,7 +55,7 @@ $Page_title = 'HORTAINRISE HOTEL';
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        <li><a href="usersetting.php"><i class="fa fa-user fa-fw"></i> User Profile</a>
                         </li>
                         <li><a href="settings.php"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
@@ -74,31 +74,7 @@ $Page_title = 'HORTAINRISE HOTEL';
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
 
-                    <li>
-                        <a class="active-menu" href="settings.php"><i class="fa fa-dashboard"></i>Room Status</a>
-                    </li>
-					<li>
-                        <a  href="room.php"><i class="fa fa-plus-circle"></i>Add Room</a>
-                    </li>
-                    <li>
-                        <a   href="roomdel.php"><i class="fa fa-pencil-square-o"></i> Delete Room</a>
-                    </li>
-                    <li>
-                        <a   href="roomdel.php"><i class="fa fa-pencil-square-o"></i> Update Room</a>
-                    </li>
-                    
-                    <li>
-                        <a class="active-menu" href="settings.php"><i class="fa fa-dashboard"></i>Banquet Hall Status</a>
-                    </li>
-		    <li>
-                        <a  href="banquethall.php"><i class="fa fa-plus-circle"></i>View Banquet Halls</a>
-                    </li>
-                    <li>
-                        <a   href="roomdel.php"><i class="fa fa-pencil-square-o"></i> Delete Banquet Hall</a>
-                    </li>
-                    <li>
-                        <a   href="roomdel.php"><i class="fa fa-pencil-square-o"></i> Update Banquet Hall</a>
-                    </li>
+				<?php include('includes/settingsidebar.php'); ?>
                     
                  
 					

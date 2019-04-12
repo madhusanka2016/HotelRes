@@ -11,27 +11,19 @@ $sql2 = "SELECT * FROM login WHERE id = '$user_id'";
 $result2 = mysqli_query($con, $sql2);
 $userRow = mysqli_fetch_array($result2, MYSQLI_ASSOC);
 
-if ($userRow['role'] == "manager"||$userRow['role'] == "reception") {
+if ($userRow['role'] == "reception"||$userRow['role'] == "manager") {
     header("location:home.php");
 }
+$Page_title = 'HORTAINRISE HOTEL';
 
 
-ob_start();
 ?> 
-
-<?php
-include('db.php');
-$rsql ="select id from room";
-$rre=mysqli_query($con,$rsql);
-
-?>
-							 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HORTAINRISE HOTEL</title>
+    <title><?php echo $Page_title ?> </title>
 	<!-- Bootstrap Styles-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FontAwesome Styles-->
@@ -80,7 +72,7 @@ $rre=mysqli_query($con,$rsql);
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
 
-				<?php include('includes/settingsidebar.php'); ?>
+                <?php include('includes/settingsidebar.php'); ?>
 					
 
                     
@@ -96,149 +88,95 @@ $rre=mysqli_query($con,$rsql);
 			 <div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
-                           DELETE ROOM <small></small>
+                           Banquet Hall Information<small></small>
                         </h1>
                     </div>
                 </div> 
                  
                                  
-            <div class="row">
-                
-                <div class="col-md-12 col-sm-12">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                           Delete room
-                        </div>
-                        <div class="panel-body">
-						<form name="form" method="post">
-                            <div class="form-group">
-                                            <label>Select the Room ID *</label>
-                                            <select name="id"  class="form-control" required>
-												<option value selected ></option>
-												<?php
-												while($rrow=mysqli_fetch_array($rre))
-												{
-												$value = $rrow['id'];
-												 echo '<option value="'.$value.'">'.$value.'</option>';
-												
-												}
-												?>
-                                                
-                                            </select>
-                              </div>
-							  
-								
-							 <input type="submit" name="del" value="Delete Room" class="btn btn-primary"> 
-							</form>
-							<?php
-							 include('db.php');
-							 
-							 if(isset($_POST['del']))
-							 {
-								$did = $_POST['id'];
-								
-								
-								$sql ="DELETE FROM `room` WHERE id = '$did'" ;
-								if(mysqli_query($con,$sql))
-								{
-								 echo '<script type="text/javascript">alert("Room was deleted") </script>' ;
-										
-										
-								}else {
-									echo '<script>alert("Sorry ! Check The System") </script>' ;
-								}
-							 }
-							
-							?>
-                        </div>
-                        
-                    </div>
-                </div>
+            
                 
                   
-           <?php
-						include ('db.php');
-						$sql = "select * from room";
+            
+        
+        <div class="row">
+                <div class="col-md-8 col-sm-8">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            BANQUET HALL INFORMATION
+                        </div>
+                        <div class="panel-body">
+								<!-- Advanced Tables -->
+                    <div class="panel panel-default">
+                        <?php
+						$sql = "select * from banquet limit 0,10";
 						$re = mysqli_query($con,$sql)
-				?>
-                <div class="row">
-				
-				
-				<?php
+						?>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>HALL ID</th>
+                                            <th>HALL Type</th>
+											<th>SEATS</th>
+											<th>UPDATE</th>
+											<th>DELETE</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+									
+									<?php
 										while($row= mysqli_fetch_array($re))
 										{
-												$id = $row['type'];
-											if($id == "Superior Room") 
+												$id = $row['id'];
+											if($id % 2 == 0) 
 											{
-												echo"<div class='col-md-3 col-sm-12 col-xs-12'>
-													<div class='panel panel-primary text-center no-boder bg-color-blue'>
-														<div class='panel-body'>
-															<i class='fa fa-users fa-5x'></i>
-															<h3>".$row['bedding']."</h3>
-														</div>
-														<div class='panel-footer back-footer-blue'>
-															".$row['type']."
+												echo "<tr class=odd gradeX>
+													<td>".$row['id']."</td>
+													<td>".$row['type']."</td>
+												   <th>".$row['seats']."</th>
+												   <td><button class='btn btn-primary btn' data-toggle='modal' data-target='#edit". $row['id'] ."'> Update </button></td><td><a href='customerdetailspool.php?id=". $row['id']."' ><button class='btn btn-danger btn' > Delete </button></a></td>
 
-														</div>
-													</div>
-												</div>";
+												</tr>";
 											}
-											else if ($id == "Deluxe Room")
+											else
 											{
-												echo"<div class='col-md-3 col-sm-12 col-xs-12'>
-													<div class='panel panel-primary text-center no-boder bg-color-green'>
-														<div class='panel-body'>
-															<i class='fa fa-users fa-5x'></i>
-															<h3>".$row['bedding']."</h3>
-														</div>
-														<div class='panel-footer back-footer-green'>
-															".$row['type']."
+												echo"<tr class=even gradeC>
+													<td>".$row['id']."</td>
+													<td>".$row['type']."</td>
+												   <th>".$row['seats']."</th>
+												   <td><button class='btn btn-primary btn' data-toggle='modal' data-target='#edit". $row['id'] ."'> Update </button></td><td><a href='customerdetailspool.php?id=". $row['id']."' ><button class='btn btn-danger btn' > Delete </button></a></td>
 
-														</div>
-													</div>
-												</div>";
-											
-											}
-											else if($id =="Guest House")
-											{
-												echo"<div class='col-md-3 col-sm-12 col-xs-12'>
-													<div class='panel panel-primary text-center no-boder bg-color-brown'>
-														<div class='panel-body'>
-															<i class='fa fa-users fa-5x'></i>
-															<h3>".$row['bedding']."</h3>
-														</div>
-														<div class='panel-footer back-footer-brown'>
-															".$row['type']."
-
-														</div>
-													</div>
-												</div>";
-											
-											}
-											else if($id =="Single Room")
-											{
-												echo"<div class='col-md-3 col-sm-12 col-xs-12'>
-													<div class='panel panel-primary text-center no-boder bg-color-red'>
-														<div class='panel-body'>
-															<i class='fa fa-users fa-5x'></i>
-															<h3>".$row['bedding']."</h3>
-														</div>
-														<div class='panel-footer back-footer-red'>
-															".$row['type']."
-
-														</div>
-													</div>
-												</div>";
+												</tr>";
 											
 											}
 										}
 									?>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <!--End Advanced Tables -->
                     
+                       
+                            
+							  
+							 
+							 
+							  
+							  
+							   
+                       </div>
+                        
+                    </div>
                 </div>
-            <?php
-				
-			ob_end_flush();
-			?>
+                
+               
+            </div>
                     
             
 				

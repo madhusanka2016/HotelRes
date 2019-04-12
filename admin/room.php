@@ -72,16 +72,7 @@ $Page_title = 'HORTAINRISE HOTEL';
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
 
-                    <li>
-                        <a  href="settings.php"><i class="fa fa-dashboard"></i>Rooms Status</a>
-                    </li>
-					<li>
-                        <a  class="active-menu" href="room.php"><i class="fa fa-plus-circle"></i>Add Room</a>
-                    </li>
-                    <li>
-                        <a  href="roomdel.php"><i class="fa fa-desktop"></i> Delete Room</a>
-                    </li>
-					
+                <?php include('includes/settingsidebar.php'); ?>
 
                     
             </div>
@@ -148,7 +139,7 @@ $Page_title = 'HORTAINRISE HOTEL';
 										$check="SELECT * FROM room WHERE type = '$room' AND bedding = '$bed'";
 										$rs = mysqli_query($con,$check);
 										$data = mysqli_fetch_array($rs, MYSQLI_NUM);
-										if($data[1] > 1) {
+										if($data > 0) {
 											echo "<script type='text/javascript'> alert('Room Already in Exists')</script>";
 											
 										}
@@ -157,13 +148,13 @@ $Page_title = 'HORTAINRISE HOTEL';
 										{
 							 
 										
-										$sql ="INSERT INTO `room`( `type`, `bedding`,`place`) VALUES ('$room','$bed','$place')" ;
-										if(mysqli_query($con,$sql))
-										{
-										 echo '<script>alert("New Room Added") </script>' ;
-										}else {
-											echo '<script>alert("Sorry ! Check The System") </script>' ;
-										}
+                                                $sql ="INSERT INTO `room`( `type`, `bedding`,`place`) VALUES ('$room','$bed','$place')" ;
+                                                if(mysqli_query($con,$sql))
+                                                {
+                                                echo '<script>alert("New Room Added") </script>' ;
+                                                }else {
+                                                    echo '<script>alert("Sorry ! Check The System") </script>' ;
+                                                }
 							 }
 							}
 							
@@ -184,7 +175,7 @@ $Page_title = 'HORTAINRISE HOTEL';
 								<!-- Advanced Tables -->
                     <div class="panel panel-default">
                         <?php
-						$sql = "select * from room limit 0,10";
+						$sql = "select * from room ";
 						$re = mysqli_query($con,$sql)
 						?>
                         <div class="panel-body">

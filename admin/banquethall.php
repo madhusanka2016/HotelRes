@@ -72,15 +72,7 @@ $Page_title = 'HORTAINRISE HOTEL';
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
 
-                    <li>
-                        <a  href="settings.php"><i class="fa fa-dashboard"></i>Banquet Hall Status</a>
-                    </li>
-		    <li>
-                        <a  class="active-menu" href="banquethall.php"><i class="fa fa-plus-circle"></i>View Banquet Halls</a>
-                    </li>
-                    <li>
-                        <a  href="roomdel.php"><i class="fa fa-desktop"></i> Delete Banquet Hall</a>
-                    </li>
+                <?php include('includes/settingsidebar.php'); ?>
 					
 
                     
@@ -94,6 +86,7 @@ $Page_title = 'HORTAINRISE HOTEL';
         <div id="page-wrapper" >
             <div id="page-inner">
 			 <div class="row">
+             
                     <div class="col-md-12">
                         <h1 class="page-header">
                            Banquet Hall Information<small></small>
@@ -112,6 +105,9 @@ $Page_title = 'HORTAINRISE HOTEL';
                     <div class="panel panel-primary">
                         <div class="panel-heading">
                             BANQUET HALL INFORMATION
+                            <button class="btn btn-danger btn" data-toggle="modal" data-target="#myModal1">
+                                    Add New Hall
+                                </button>
                         </div>
                         <div class="panel-body">
 								<!-- Advanced Tables -->
