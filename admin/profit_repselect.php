@@ -130,8 +130,8 @@ $Page_title = 'HORTAINRISE HOTEL - Salary';
                                </div>
                                <div class="form-group">
                                             <label>Month</label>
-                                            <select name="month" class="form-control" required>
-                                            
+                                            <select name="month" class="form-control" >
+                                                        <option value="" selected> </option>
                                                         <option value="01" >January </option>
                                                         <option value="02" >February </option>
                                                         <option value="03" >March </option>

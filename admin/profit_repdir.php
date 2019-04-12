@@ -8,7 +8,13 @@
                                         $year = $_POST['year'];
                                         $month = $_POST['month'];
                                         $date = $_POST['date'];
-                                        $range=$year.'-'.$month.'-'.$date;
+                                        if($month==""){
+                                          $range=$year;
+                                        }
+                                        else{
+                                          $range=$year.'-'.$month.'-'.$date;
+                                        }
+                                       
                                         if($type=='room'){
                                    
                                             header("location:profit_reproom.php?id=$range");
