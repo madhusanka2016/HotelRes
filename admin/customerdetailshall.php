@@ -27,6 +27,22 @@ if(isset($_POST['update'])){
 			 	}
 
 }
+if(isset($_GET["id"])){
+    include ('db.php');
+		
+				
+				
+                $user = $_GET['id'];
+                $delsql= "DELETE FROM `banquetbook` WHERE id='$user' ";
+	
+                if(mysqli_query($con,$delsql))
+                {
+                    header("location:customerdetailshall.php");
+                }
+
+        }
+
+
 
 
 
@@ -156,6 +172,7 @@ ob_start();
                                                     <th>Country</th>
                                                     <th>Phone</th>
                                                     <th>Edit</th>
+                                                    
 
                                                 </tr>
                                             </thead>
@@ -265,8 +282,10 @@ ob_start();
 													<td>" . $row['National'] . "</td>
                                                                                                         <td>" . $row['Country'] . "</td>
                                                                                                         <td>" . $row['Phone'] . "</td>
-                                                                                                        <td><button class='btn btn-primary btn' data-toggle='modal' data-target='#edit". $row['id'] ."'> Edit </buttpn></td>
-													</tr>";
+                                                                                                        <td><button class='btn btn-primary btn' data-toggle='modal' data-target='#edit". $row['id'] ."'> Edit </button>  <a href='customerdetailshall.php?id=". $row['id']."' ><button class='btn btn-danger btn' > Delete </button></a></td>
+                                                                                                                                                                            
+
+                                                                                                        </tr>";
     } else {
         echo"<tr class='gradeU'>
 													<td>" . $row['id'] . " </td>
@@ -277,7 +296,7 @@ ob_start();
 													<td>" . $row['National'] . "</td>
 													<td>" . $row['Country'] . "</td>
                                                     <td>" . $row['Phone'] . "</td>	
-                                                    <td><button class='btn btn-primary btn' data-toggle='modal' data-target='#edit". $row['id'] ."'> Edit </buttpn></td>
+                                                    <td><button class='btn btn-primary btn' data-toggle='modal' data-target='#edit". $row['id'] ."'> Edit </button>  <a href='customerdetailshall.php?id=". $row['id']."' ><button class='btn btn-danger btn' > Delete </button></a></td>
 													</tr>";
                                       
                                                     }

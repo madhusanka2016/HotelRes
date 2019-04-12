@@ -27,6 +27,20 @@ if(isset($_POST['update'])){
 			 	}
 
 }
+if(isset($_GET["id"])){
+    include ('db.php');
+		
+				
+				
+                $user = $_GET['id'];
+                $delsql= "DELETE FROM `cafebook` WHERE id='$user' ";
+	
+                if(mysqli_query($con,$delsql))
+                {
+                    header("location:customerdetailscafe.php");
+                }
+
+        }
 
 
 
@@ -265,7 +279,7 @@ ob_start();
 													<td>" . $row['National'] . "</td>
                                                                                                         <td>" . $row['Country'] . "</td>
                                                                                                         <td>" . $row['Phone'] . "</td>
-                                                                                                        <td><button class='btn btn-primary btn' data-toggle='modal' data-target='#edit". $row['id'] ."'> Edit </buttpn></td>
+                                                                                                        <td><button class='btn btn-primary btn' data-toggle='modal' data-target='#edit". $row['id'] ."'> Edit </buttpn><a href='customerdetailscafe.php?id=". $row['id']."' ><button class='btn btn-danger btn' > Delete </button></a></td>
 													</tr>";
     } else {
         echo"<tr class='gradeU'>
@@ -277,7 +291,7 @@ ob_start();
 													<td>" . $row['National'] . "</td>
 													<td>" . $row['Country'] . "</td>
                                                     <td>" . $row['Phone'] . "</td>	
-                                                    <td><button class='btn btn-primary btn' data-toggle='modal' data-target='#edit". $row['id'] ."'> Edit </buttpn></td>
+                                                                    <td><button class='btn btn-primary btn' data-toggle='modal' data-target='#edit". $row['id'] ."'> Edit </buttpn><a href='customerdetailscafe.php?id=". $row['id']."' ><button class='btn btn-danger btn' > Delete </button></a></td>
 													</tr>";
                                       
                                                     }
