@@ -16,6 +16,20 @@ if ($userRow['role'] == "reception"||$userRow['role'] == "manager") {
 }
 $Page_title = 'HORTAINRISE HOTEL';
 
+if(isset($_GET["id"])){
+    include ('db.php');
+		
+				
+				
+                $hall = $_GET['id'];
+                $delsql= "DELETE FROM `banquet` WHERE id='$hall' ";
+	
+                if(mysqli_query($con,$delsql))
+                {
+                    header("location:banquetdel.php");
+                }
+
+        }
 
 ?> 
 <!DOCTYPE html>
@@ -137,7 +151,7 @@ $Page_title = 'HORTAINRISE HOTEL';
 													<td>".$row['id']."</td>
 													<td>".$row['type']."</td>
 												   <th>".$row['seats']."</th>
-												   <td><button class='btn btn-primary btn' data-toggle='modal' data-target='#edit". $row['id'] ."'> Update </button></td><td><a href='customerdetailspool.php?id=". $row['id']."' ><button class='btn btn-danger btn' > Delete </button></a></td>
+												   <td><button class='btn btn-primary btn' data-toggle='modal' data-target='#edit". $row['id'] ."'> Update </button></td><td><a href='banquetdel.php?id=". $row['id']."' ><button class='btn btn-danger btn' > Delete </button></a></td>
 
 												</tr>";
 											}
@@ -147,7 +161,7 @@ $Page_title = 'HORTAINRISE HOTEL';
 													<td>".$row['id']."</td>
 													<td>".$row['type']."</td>
 												   <th>".$row['seats']."</th>
-												   <td><button class='btn btn-primary btn' data-toggle='modal' data-target='#edit". $row['id'] ."'> Update </button></td><td><a href='customerdetailspool.php?id=". $row['id']."' ><button class='btn btn-danger btn' > Delete </button></a></td>
+												   <td><button class='btn btn-primary btn' data-toggle='modal' data-target='#edit". $row['id'] ."'> Update </button></td><td><a href='banquetdel.php?id=". $row['id']."' ><button class='btn btn-danger btn' > Delete </button></a></td>
 
 												</tr>";
 											

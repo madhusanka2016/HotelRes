@@ -88,13 +88,21 @@ $Page_title = 'Administrator';
 								
 								$rsql = "SELECT * FROM `banquetbook`";
 								$rre = mysqli_query($con,$rsql);
-								$r =0;
+                                $r =0;
+                                $rh =0;
 								while($row=mysqli_fetch_array($rre) )
 								{		
 										$br = $row['stat'];
 										if($br=="Not Conform")
 										{
 											$r = $r + 1;
+											
+											
+											
+                                        }
+                                        elseif($br=="Conform")
+										{
+											$rh = $rh+ 1;
 											
 											
 											
@@ -195,7 +203,7 @@ $Page_title = 'Administrator';
                                         <h4 class="panel-title">
                                             <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="collapsed">
 											<button class="btn btn-primary" type="button">
-												 Booked Halls  <span class="badge"><?php echo $r ; ?></span>
+												 Booked Halls  <span class="badge"><?php echo $rh ; ?></span>
 											</button>
 											
 											</a>

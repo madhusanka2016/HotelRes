@@ -19,5 +19,5 @@
                         <a   href="banquetdel.php"><i class="fa fa-pencil-square-o"></i> Delete Banquet Hall</a>
                     </li>
                     <li>
-                        <a   href="roomdel.php"><i class="fa fa-pencil-square-o"></i> Update Banquet Hall</a>
+                        <a   href="banquetdel.php"><i class="fa fa-pencil-square-o"></i> Update Banquet Hall</a>
                     </li>

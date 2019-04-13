@@ -384,20 +384,7 @@ $Page_title = 'Administrator';
 									}
 								?> </button></td> 
 							</tr>
-							<tr>
-								<td><b>Total Rooms	</b> </td>
-								<td> <button type="button" class="btn btn-danger btn-circle"><?php 
-								
-								$f5 =$r; 
-								if($f5 <=0 )
-									{	$f5 = "NO";
-										echo $f5;
-									}
-									else{
-											echo $f5;
-									}
-								 ?> </button></td> 
-							</tr>
+							
 						</table>
 						
 						
