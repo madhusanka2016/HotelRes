@@ -229,7 +229,7 @@ $Page_title = 'Administrator';
 															<h3>".$mrow['FName']."</h3>
 														</div>
 														<div class='panel-footer back-footer-blue'>
-														<a href=show.php?sid=".$fid ."><button  class='btn btn-primary btn' data-toggle='modal' data-target='#myModal'>
+														<a href=showpaybanquet.php?sid=".$fid ."><button  class='btn btn-primary btn' data-toggle='modal' data-target='#myModal'>
 													Show
 													</button></a>
 															".$mrow['THall']."

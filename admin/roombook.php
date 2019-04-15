@@ -241,7 +241,9 @@ $Page_title = 'Administrator';
 															
 															
 														</select>
+
 										 </div>
+										 <input type="hidden" name="id" value="<?php $id ?>" />
 							<input type="submit" name="co" value="Conform" class="btn btn-success">
 							
 							</form>
@@ -434,6 +436,7 @@ $Page_title = 'Administrator';
 						if(isset($_POST['co']))
 						{	
 							$st = $_POST['conf'];
+							$id = $_POST['id'];
 							
 							 
 							
