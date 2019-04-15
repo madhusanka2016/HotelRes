@@ -208,6 +208,20 @@ $Page_title = 'Administrator';
                                     
                                 </table>
                             </div>
+							<?php 
+								$check="SELECT * FROM banquet WHERE type = '$thall'";
+								$rs = mysqli_query($con,$check);
+								$data = mysqli_fetch_array($rs, MYSQLI_NUM);
+								if($data > 0) {
+									$avastat=1;
+									
+								}
+								else{
+									$avastat=0;
+								}
+							
+							
+							?>
                         
 					
 							
@@ -218,7 +232,13 @@ $Page_title = 'Administrator';
 														<label>Select the Conformation</label>
 														<select name="conf"class="form-control">
 															<option value selected>	</option>
-															<option value="Conform">Conform</option>
+															<?php 
+															if($avastat==1){
+																echo '<option value="Conform">Conform</option>';
+															}
+															?>
+															<option value="Reject">Reject</option>
+
 															
 															
 														</select>
@@ -365,19 +385,22 @@ $Page_title = 'Administrator';
 									}
 								?> </button></td> 
 							</tr>
-							<tr>
-								<td><b>Total Halls</b> </td>
-								<td> <button type="button" class="btn btn-danger btn-circle"><?php 
-								
-								$f5 =$r-$cr; 
-								if($f5 <=0 )
-									{	$f5 = "NO";
-										echo $f5;
-									}
-									else{
-											echo $f5;
-									}
-								 ?> </button></td> 
+							
+						</table>
+						<table>
+
+						<tr>
+								<td width="120"><b>Availabilty</b>	 </td>
+								<td color="green">
+											<?php 
+															if($avastat==1){
+																echo '<b>Hall Available</b>';
+															}
+															else{
+																echo '<b>Hall Not Available</b>';
+															}
+															?>
+								</td> 
 							</tr>
 						</table>
 						
@@ -436,7 +459,7 @@ $Page_title = 'Administrator';
 									$urb = "UPDATE `banquetbook` SET `stat`='$st' WHERE id = '$id'";
 									if( mysqli_query($con,$urb))
 									{	
-										//echo "<script type='text/javascript'> alert('Guest Room booking is conform')</script>";
+										// echo "<script type='text/javascript'> alert('Guest Room booking is conform')</script>";
 										//echo "<script type='text/javascript'> window.location='home.php'</script>";
 										 $type_of_hall = 0;       
 												if($thall=="Magenta")
@@ -499,11 +522,12 @@ $Page_title = 'Administrator';
 												$fintot = $ttot + $mepr + $btot ;
 													
 													//echo "<script type='text/javascript'> alert('$count_date')</script>";
-												$psql = "INSERT INTO `payment`(`id`, `title`, `fname`, `lname`, `troom`, `tbed`, `nroom`, `cin`, `cout`, `ttot`,`meal`, `mepr`, `btot`,`fintot`,`noofdays`) VALUES ('$id','$title','$fname','$lname','$troom','$bed','$nroom','$cin','$cout','$ttot','$meal','$mepr','$btot','$fintot','$days')";
-												
+												$psql = "INSERT INTO `banquetpayment`(`id`, `title`, `fname`, `lname`,`hall`,`farrange`,`light`,`cindate`,`cintime`,`ttot`,`mepr`, `btot`,`fintot`) VALUES ('$id','$title','$Fname','$lname','$thall','$farrange','$light','$cindate','$cintime','$ttot','$mepr','$btot','$fintot')";
+												//$psql = "INSERT INTO `banquetpayment`(`id`, `title`, `fname`, `lname`, `hall`, `farr`, `nroom`, `cin`, `cout`, `ttot`,`meal`, `mepr`, `btot`,`fintot`,`noofdays`) VALUES ('$id','$title','$fname','$lname','$troom','$bed','$nroom','$cin','$cout','$ttot','$meal','$mepr','$btot','$fintot','$days')";
+
 												if(mysqli_query($con,$psql))
 												{	$notfree="NotFree";
-													$rpsql = "UPDATE `banquet` SET `place`='$notfree',`cusid`='$id' where seats ='$bed' and type='$thall' ";
+													$rpsql = "UPDATE `banquet` SET `place`='$notfree',`cusid`='$id' where type='$thall' ";
 													if(mysqli_query($con,$rpsql))
 													{
 													echo "<script type='text/javascript'> alert('Booking Conform')</script>";
@@ -516,33 +540,17 @@ $Page_title = 'Administrator';
 									}
 							
 								
-					}	
-					else{
-						$urb = "UPDATE `banquetbook` SET `stat`='$st' WHERE id = '$id'";
-						if( mysqli_query($con,$urb)){
-							echo "<script type='text/javascript'> alert('Booking Rejected')</script>";
-													
-							echo "<script type='text/javascript'> window.location='home.php'</script>";
-						}
-					}	
-								
-									if($f1=="NO" )
-								{
-									echo "<script type='text/javascript'> alert('Sorry! Not Available Magenta Hall ')</script>";
-								}
-								else if($f2 =="NO")
-									{
-										echo "<script type='text/javascript'> alert('Sorry! Not Available Merigold')</script>";
-										
-									}
-									else if ($f3 == "NO")
-									{
-										echo "<script type='text/javascript'> alert('Sorry! Not Available Citadel')</script>";
-									}
-										else if($f4=="NO")
-										{
-										echo "<script type='text/javascript'> alert('Sorry! Not Available Victorian Lobby')</script>";
+									}	
+									else{
+										$urb = "UPDATE `banquetbook` SET `stat`='$st' WHERE id = '$id'";
+										if( mysqli_query($con,$urb)){
+											echo "<script type='text/javascript'> alert('Booking Rejected')</script>";
+																	
+											echo "<script type='text/javascript'> window.location='home.php'</script>";
 										}
+									}	
+												
+									
 										
 							
 					
