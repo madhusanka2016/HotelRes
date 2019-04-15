@@ -226,6 +226,20 @@ $Page_title = 'Administrator';
                                     
                                 </table>
                             </div>
+							<?php 
+								$check="SELECT * FROM room WHERE type = '$troom' AND bedding = '$bed'";
+								$rs = mysqli_query($con,$check);
+								$data = mysqli_fetch_array($rs, MYSQLI_NUM);
+								if($data > 0) {
+									$avastat=1;
+									
+								}
+								else{
+									$avastat=0;
+								}
+							
+							
+							?>
                         
 					
 							
@@ -236,7 +250,12 @@ $Page_title = 'Administrator';
 														<label>Select the Conformation</label>
 														<select name="conf"class="form-control">
 															<option value selected>	</option>
-															<option value="Conform">Conform</option>
+															<?php 
+															if($avastat==1){
+																echo '<option value="Conform">Conform</option>';
+															}
+															?>
+															
 															<option value="Reject">Reject</option>
 															
 															
@@ -387,6 +406,24 @@ $Page_title = 'Administrator';
 								?> </button></td> 
 							</tr>
 							
+							
+						</table>
+						
+						<table>
+
+						<tr>
+								<td width="120"><b>Availabilty</b>	 </td>
+								<td color="green">
+											<?php 
+															if($avastat==1){
+																echo '<b>Room Available</b>';
+															}
+															else{
+																echo '<b>Room Not Available</b>';
+															}
+															?>
+								</td> 
+							</tr>
 						</table>
 						
 						
@@ -436,35 +473,16 @@ $Page_title = 'Administrator';
 						if(isset($_POST['co']))
 						{	
 							$st = $_POST['conf'];
-							$id = $_POST['id'];
+							
 							
 							 
 							
 							if($st=="Conform")
 							{
-									$urb = "UPDATE `roombook` SET `stat`='$st' WHERE id = '$id'";
-									
-								if($f1=="NO" )
-								{
-									echo "<script type='text/javascript'> alert('Sorry! Not Available Superior Room ')</script>";
-								}
-								else if($f2 =="NO")
-									{
-										echo "<script type='text/javascript'> alert('Sorry! Not Available Guest House')</script>";
-										
-									}
-									else if ($f3 == "NO")
-									{
-										echo "<script type='text/javascript'> alert('Sorry! Not Available Single Room')</script>";
-									}
-										else if($f4=="NO")
-										{
-										echo "<script type='text/javascript'> alert('Sorry! Not Available Deluxe Room')</script>";
-										}
-										
-										else if( mysqli_query($con,$urb))
+								$urb = "UPDATE `roombook` SET `stat`='$st' WHERE id = '$id'";									
+								 if( mysqli_query($con,$urb))
 											{	
-												//echo "<script type='text/javascript'> alert('Guest Room booking is conform')</script>";
+												// echo "<script type='text/javascript'> alert('Guest Room booking is conform')</script>";
 												//echo "<script type='text/javascript'> window.location='home.php'</script>";
 												 $type_of_room = 0;       
 														if($troom=="Superior Room")
@@ -533,16 +551,17 @@ $Page_title = 'Administrator';
 														
 														$fintot = $ttot + $mepr + $btot ;
 															
-															//echo "<script type='text/javascript'> alert('$count_date')</script>";
 														$psql = "INSERT INTO `payment`(`id`, `title`, `fname`, `lname`, `troom`, `tbed`, `nroom`, `cin`, `cout`, `ttot`,`meal`, `mepr`, `btot`,`fintot`,`noofdays`) VALUES ('$id','$title','$fname','$lname','$troom','$bed','$nroom','$cin','$cout','$ttot','$meal','$mepr','$btot','$fintot','$days')";
 														
 														if(mysqli_query($con,$psql))
 														{	$notfree="NotFree";
-															$rpsql = "UPDATE `room` SET `place`='$notfree',`cusid`='$id' where bedding ='$bed' and type='$troom' ";
+																														echo "<script type='text/javascript'> alert('$count_date')</script>";
+
+															$rpsql = "UPDATE `room` SET `place`='$notfree',`cusid`='$book' where bedding ='$bed' and type='$troom' ";
 															if(mysqli_query($con,$rpsql))
 															{
 															echo "<script type='text/javascript'> alert('Booking Conform')</script>";
-															echo "<script type='text/javascript'> window.location='home.php'</script>";
+															echo "<script type='text/javascript'> window.location='roombooking.php'</script>";
 															}
 															
 															
@@ -556,7 +575,7 @@ $Page_title = 'Administrator';
 								$urb = "UPDATE `roombook` SET `stat`='$st' WHERE id = '$id'";
 								if( mysqli_query($con,$urb)){
 									echo "<script type='text/javascript'> alert('Booking Rejected')</script>";
-															echo "<script type='text/javascript'> window.location='home.php'</script>";
+															echo "<script type='text/javascript'> window.location='roombooking.php'</script>";
 								}
 							}
 					
