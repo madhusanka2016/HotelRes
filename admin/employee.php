@@ -177,7 +177,7 @@ ob_start();
                                                                                                         <td>" . $co . "</td>
                                                                                                         <td>" . $jd . "</td>
 
-													<td><button class='btn btn-primary btn' data-toggle='modal' data-target='#myModal'>
+													<td><button class='btn btn-primary btn' data-toggle='modal' data-target='#myModal" . $id . "'>
 															 Update 
 													</button></td>
 													<td><a href=usersettingac.php?eid=" . $id . " <button class='btn btn-default'> <i class='fa fa-edit' ></i> " . $act_invert . "</button></td>
@@ -193,14 +193,68 @@ ob_start();
 													<td>" . $de . "</td>
                                                                                                         <td>" . $co . "</td>
                                                                                                         <td>" . $jd . "</td>
-													<td><button class='btn btn-primary btn' data-toggle='modal' data-target='#myModal'>
-															 Update 
+                                                    <td><button class='btn btn-primary btn' data-toggle='modal' data-target='#myModal" . $id . "'>
+                                                            Update 
 													</button></td>
-													<td><a href=employeeac.php?eid=" . $id . " <button class='btn btn-default'> <i class='fa fa-edit' ></i>  " . $act_invert . "</button></td>
+													<td><a href=employeeac.php?eid=" . $id . " <button class='btn btn-default'> <i class='fa fa-edit' ></i>  ". $act_invert . "</button></td>
                                                                                                                                                                                                                    													<td><a href=employeedel.php?eid=" . $id . " <button class='btn btn-danger'> <i class='fa fa-edit' ></i> Delete</button></td>
    
-												</tr>";
+                                                </tr>";
+                                                
+                                                    
                                                     }
+                                                    echo '<div class="modal fade" id="myModal'.$id.'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                            <h4 class="modal-title" id="myModalLabel">Change the User name and Password '.$id.'</h4>
+                                                        </div>
+                                                        <form method="post">
+                                                            <div class="modal-body">
+                                                                <div class="form-group">
+                                                                    <label>Employee no</label>
+                                                                    <input name="newno"  class="form-control" placeholder="Enter Employee No" value="'. $no .'">
+                                                                </div>
+            
+                                                                <div class="form-group">
+                                                                    <label>Employee name</label>
+                                                                    <input name="newname"  class="form-control" placeholder="Enter Employee Name" value="'. $na.'">
+                                                                </div>
+            
+                                                                <div class="form-group">
+                                                                    <label>Contact no</label>
+                                                                    <input name="newcon" type="tel" class="form-control" placeholder="Enter Employee Contact" value="'. $co .'">
+                                                                </div>
+            
+            
+            
+                                                                <div class="form-group">
+                                                                    <label>Designation</label>
+                                                                    <select name="newdes" class="form-control" required>
+                                                                            <option value="'. $de .'" selected>Please Select</option>
+                                                                            <option value="admin">ADMINISTRATOR</option>
+                                                                            <option value="manager">MANAGER</option>
+                                                                            <option value="reception">RECEPTION</option>                           
+                                                                    </select>
+                                                                </div>
+            
+                                                                <div class="form-group">
+                                                                    <label>Date Joined</label>
+                                                                    <input name="newdate" type="date" value="'. $jd .'" class="form-control" placeholder="Enter date joined">
+                                                                </div>
+                                                            </div>
+            
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            
+                                                                <input type="submit" name="update" value="Update" class="btn btn-primary">
+                                                                    </form>
+            
+                                                            </div>
+                                                    </div>
+                                                </div>
+                                            </div>';
                                                 }
                                                 ?>
 
@@ -212,10 +266,10 @@ ob_start();
                             </div>
                             <!--End Advanced Tables -->
                             <div class="panel-body">
-                                <button class="btn btn-primary btn" data-toggle="modal" data-target="#myModal1">
+                                <button class="btn btn-primary btn" data-toggle="modal" data-target="#myModalnew">
                                     Add New Employee
                                 </button>
-                                <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="myModalnew" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -286,88 +340,39 @@ ob_start();
                                  echo '<script>alert("Sorry ! Check The System") </script>' ;
                                 }
                             }
+                            if (isset($_POST['update'])) {
+                        
+                                $id = $_POST['id'];
+                                        $newno = $_POST['newno'];
+                                        $newname = $_POST['newname'];
+                                        $newdes = $_POST['newdes'];
+                                        $newjd = $_POST['newdate'];
+                                        $newcon = $_POST['newcon'];
+        
+                                $upsql = "UPDATE `employee` SET `emp_no`='$newno',`name`='$newname', `designation` = '$newdes', "
+                                        . "`contact` = '$newcon', `joined_date` = '$newjd' WHERE id = '$id'";
+                                if (mysqli_query($con, $upsql)) {
+                                    echo' <script language="javascript" type="text/javascript"> alert("Employee updated") </script>';
+                                }
+                                else{
+                                    echo' <script language="javascript" type="text/javascript"> alert("Employee Not Updated") </script>';
+                                }
+        
+                                header("Location: employee.php");
+                            }
                             
                             ?>
+                            
 
                             <div class="panel-body">
 
-                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                <h4 class="modal-title" id="myModalLabel">Change the User name and Password</h4>
-                                            </div>
-                                            <form method="post">
-                                                <div class="modal-body">
-                                                    <div class="form-group">
-                                                        <label>Add new employee no</label>
-                                                        <input name="newno"  class="form-control" placeholder="Enter Employee No">
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label>Add new employee name</label>
-                                                        <input name="newname"  class="form-control" placeholder="Enter Employee Name">
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label>Add contact sssno</label>
-                                                        <input name="newcon" type="tel" class="form-control" placeholder="Enter Employee Contact">
-                                                    </div>
-
-
-
-                                                    <div class="form-group">
-                                                        <label>Designation</label>
-                                                        <select name="newdes" class="form-control" required>
-                                                                <option value="admin">ADMINISTRATOR</option>
-                                                                <option value="manager">MANAGER</option>
-                                                                <option value="reception">RECEPTION</option>                           
-                                                        </select>
-                                                    </div>
-
-                                                    <div class="form-group">
-                                                        <label>Date Joined</label>
-                                                        <input name="newdate" type="date" value="<?php echo date("Y-m-d"); ?>" class="form-control" placeholder="Enter date joined">
-                                                    </div>
-                                                </div>
-
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
-                                                    <input type="submit" name="up" value="Update" class="btn btn-primary">
-                                                        </form>
-
-                                                </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>
 
                     <!-- /. ROW  -->
-                    <?php
-                    if (isset($_POST['up'])) {
-                        
-                        $id = $_POST['id'];
-                                $newno = $_POST['newno'];
-                                $newname = $_POST['newname'];
-                                $newdes = $_POST['newdes'];
-                                $newjd = $_POST['newdate'];
-                                $newcon = $_POST['newcon'];
-
-                        $upsql = "UPDATE `employee` SET `emp_no`='$newno',`name`='$newname', `designation` = '$newdes', "
-                                . "`contact` = '$newcon', `joined_date` = '$newjd' WHERE id = '$id'";
-                        if (mysqli_query($con, $upsql)) {
-                            echo' <script language="javascript" type="text/javascript"> alert("Employee updated") </script>';
-                        }
-
-                        header("Location: employee.php");
-                    }
-                    ob_end_flush();
-                    ?>
-
+                   
 
 
                     <!-- /. PAGE INNER  -->
