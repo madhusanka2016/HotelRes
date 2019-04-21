@@ -1,18 +1,18 @@
 
-Profit Report- Need a seacrh bar to search in daily/monthly/early
+Profit Report- Need a seacrh bar to search in daily/monthly/early ok
 employee salary handling Ok
 booking summary report Ok
 customer details- Need to update-delete OK
 create all the reservations(room/banquet/pool/cafetaria) Ok
 user registration Ok
-cafebooking php error
+cafebooking php error ok
 reject Ok
-customer edit OK - Navigation changed 
+customer edit OK - Navigation changed  ok
 print OK
-navigation Making
+navigation Making ok
 
 search emp Ok
-add room update delete
+add room update delete ok
 
 
 
